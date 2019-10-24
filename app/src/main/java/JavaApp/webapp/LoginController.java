@@ -1,5 +1,6 @@
 package JavaApp.webapp;
 
+import JavaApp.auth.ProfileRepository;
 import JavaApp.login.LoginRequest;
 
 import javax.enterprise.context.RequestScoped;
@@ -11,16 +12,14 @@ import javax.inject.Named;
 public class LoginController {
 
     @Inject
-    private LoginRequest LoginRequest;
-
-    public String info(){
-        return LoginRequest.toString();
-    }
+    private LoginRequest loginRequest;
 
     @Inject
-    private LoginRequest loginRequest;
+    private ProfileRepository profileRepository;
 
     public void login() {
         System.out.println("Tried to log in using " + loginRequest.toString());
+
+        profileRepository.sampleCodeWithPC();
     }
 }
