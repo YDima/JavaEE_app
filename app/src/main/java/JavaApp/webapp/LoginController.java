@@ -17,7 +17,10 @@ public class LoginController {
         return LoginRequest.toString();
     }
 
-    public void login(){
-        System.out.println("Welcome");
+    @Inject
+    private LoginRequest loginRequest;
+
+    public void login() {
+        System.out.println("Tried to log in using " + loginRequest.toString());
     }
 }
