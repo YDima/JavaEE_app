@@ -34,7 +34,6 @@
                             <h:outputLabel value="Username"/>
                             <h:inputText value="#{loginRequest.username}" label="Username" class="input100">
                                 <f:validateLength minimum="1" maximum="15"/>
-                                <f:validateRegex pattern="[a-z]"/>
                             </h:inputText>
                         </div>
 
@@ -42,7 +41,6 @@
                             <h:outputLabel value="Password"/>
                             <h:inputSecret value="#{loginRequest.password}" label="Password" class="input100">
                                 <f:validateLength minimum="8" maximum="33"/>
-                                <f:validateRegex pattern="[a-zA-Z]"/>
                             </h:inputSecret>
                         </div>
 
@@ -62,15 +60,13 @@
 <!--                        </h:messages>-->
 
                     </h:form>
-                    <h:outputText value="#{msg['jaz.app.name']}"/>
+<!--                    <h:outputText value="#{msg['jaz.app.name']}"/>-->
 
                 </div>
             </div>
 
         </div>
     </div>
-    <h:messages style="color:red"/>
-
     <h:outputScript name="jquery-3.2.1.min.js" library="vendor" />
     <h:outputScript name="popper.js" library="vendor" />
     <h:outputScript name="bootstrap.min.js" library="vendor" />

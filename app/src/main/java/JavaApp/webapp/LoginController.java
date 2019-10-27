@@ -1,6 +1,6 @@
 package JavaApp.webapp;
 
-import JavaApp.auth.ProfileRepository;
+import JavaApp.DataBase;
 import JavaApp.login.LoginRequest;
 
 import javax.enterprise.context.RequestScoped;
@@ -15,11 +15,15 @@ public class LoginController {
     private LoginRequest loginRequest;
 
     @Inject
-    private ProfileRepository profileRepository;
-
+    private DataBase dataBase;
     public void login() {
+
+        if (dataBase.userExists(loginRequest.getUsername())) {
+
+        }
+        else
+
         System.out.println("Tried to log in using " + loginRequest.toString());
 
-        profileRepository.sampleCodeWithPC();
     }
 }
