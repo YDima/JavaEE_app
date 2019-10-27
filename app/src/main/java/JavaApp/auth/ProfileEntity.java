@@ -16,8 +16,8 @@ public class ProfileEntity {
     private String name;
 
     public ProfileEntity() {
-
     }
+
     public ProfileEntity(String name) {
         this.name = name;
     }
