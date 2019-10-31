@@ -1,0 +1,12 @@
+-classpath '/Users/ydima3/IdeaProjects/app/app/build/classes/java/main:/Users/ydima3/IdeaProjects/app/app/build/resources/main:/Users/ydima3/.gradle/caches/modules-2/files-2.1/javax/javaee-api/8.0/5595992a15bf40ceda8a831c77ecfe4043f8f161/javaee-api-8.0.jar:/Users/ydima3/.gradle/caches/modules-2/files-2.1/org.slf4j/slf4j-api/1.7.28/2cd9b264f76e3d087ee21bfc99305928e1bdb443/slf4j-api-1.7.28.jar:/Users/ydima3/.gradle/caches/modules-2/files-2.1/com.sun.mail/javax.mail/1.6.0/a055c648842c4954c1f7db7254f45d9ad565e278/javax.mail-1.6.0.jar:/Users/ydima3/.gradle/caches/modules-2/files-2.1/javax.activation/activation/1.1/e6cb541461c2834bdea3eb920f1884d1eb508b50/activation-1.1.jar'
+-d '/Users/ydima3/IdeaProjects/app/app/build/docs/javadoc'
+-doctitle 'app 1.0-SNAPSHOT API'
+-quiet 
+-windowtitle 'app 1.0-SNAPSHOT API'
+'/Users/ydima3/IdeaProjects/app/app/src/main/java/JavaApp/AveregeServlet.java'
+'/Users/ydima3/IdeaProjects/app/app/src/main/java/JavaApp/webapp/RegisterController.java'
+'/Users/ydima3/IdeaProjects/app/app/src/main/java/JavaApp/webapp/LoginController.java'
+'/Users/ydima3/IdeaProjects/app/app/src/main/java/JavaApp/DataBase.java'
+'/Users/ydima3/IdeaProjects/app/app/src/main/java/JavaApp/register/RegisterRequest.java'
+'/Users/ydima3/IdeaProjects/app/app/src/main/java/JavaApp/login/LoginRequest.java'
+'/Users/ydima3/IdeaProjects/app/app/src/main/java/JavaApp/login/LoginFilter.java'

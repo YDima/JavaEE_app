@@ -1,0 +1,1 @@
+typeSearchIndex = [{"l":"All Classes","url":"allclasses-index.html"},{"p":"JavaApp","l":"AveregeServlet"},{"p":"JavaApp","l":"DataBase"},{"p":"JavaApp.webapp","l":"LoginController"},{"p":"JavaApp.login","l":"LoginFilter"},{"p":"JavaApp.login","l":"LoginRequest"},{"p":"JavaApp.webapp","l":"RegisterController"},{"p":"JavaApp.register","l":"RegisterRequest"}]
