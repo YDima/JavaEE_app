@@ -15,10 +15,12 @@ public class DataBase {
     }
 
     public void addUser(String username, String password){
+
         map.put(username, password);
     }
 
     public boolean userExists(String username){
+
         return map.containsKey(username);
     }
 

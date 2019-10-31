@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE html PUBLIC "-//W3//DTD XHTML 1.0 Transitional//EN"
         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns:h="http://java.sun.com/jsf/html" xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:f="http://xmlns.jcp.org/jsf/core">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html" xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:f="http://xmlns.jcp.org/jsf/core">
 <h:head>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Log in</title>
 
-<!--    <h:outputStylesheet rel="stylesheet" href="style.css" type="text/css"/> -->
+    <!--    <h:outputStylesheet rel="stylesheet" href="style.css" type="text/css"/> -->
 
     <h:outputStylesheet name="img.jpg" library="images"/>
     <h:outputStylesheet name="bootstrap.min.css" library="vendor"/>
@@ -32,19 +32,20 @@
 
                         <div class="wrap-input100">
                             <h:outputLabel value="Username"/>
-                            <h:inputText value="#{loginRequest.username}" label="Username" class="input100">
+                            <h:inputText validatorMessage="Username can have only small letters and numbers." value="#{loginRequest.username}" id="username" class="input100">
                                 <f:validateLength minimum="1" maximum="15"/>
+                                <f:validateRegex pattern="((?=.*\d)(?=.*[a-z]).{1,33})"/>
                             </h:inputText>
+                            <h:message for="username"/>
                         </div>
-
                         <div class="wrap-input100">
                             <h:outputLabel value="Password"/>
-                            <h:inputSecret value="#{loginRequest.password}" label="Password" class="input100">
+                            <h:inputSecret validatorMessage="Haslo Should have at least one small letter, one big letter, and numbers, and should be minimum of 8 characters long." value="#{loginRequest.password}" id="password" class="input100">
                                 <f:validateLength minimum="8" maximum="33"/>
+                                <f:validateRegex pattern="((?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{5,30})"/>
                             </h:inputSecret>
+                            <h:message for="password"/>
                         </div>
-
-
 
                         <div class="container-login100-form-btn">
                             <h:commandButton value="Login" class="login100-form-btn" action="#{loginController.login}"/>
@@ -53,14 +54,7 @@
                         <div class="container-login100-form-btn">
                             <a class="login100-form-btn" href="register.xhtml">Register here</a>
                         </div>
-
-
-<!--                        <h:messages>-->
-<!--                            <h:outputText value="#{LoginController.info()}"/>-->
-<!--                        </h:messages>-->
-
                     </h:form>
-<!--                    <h:outputText value="#{msg['jaz.app.name']}"/>-->
 
                 </div>
             </div>
