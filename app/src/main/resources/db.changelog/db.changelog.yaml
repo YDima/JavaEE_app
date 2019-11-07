@@ -1,0 +1,8 @@
+databaseChangeLog:
+  - changeSet:
+      id: init
+      author: Dmytro Yurchenko
+      sqlFile:
+        relativeToChangelogFile: true
+        splitStatements: false
+        path: init.sql

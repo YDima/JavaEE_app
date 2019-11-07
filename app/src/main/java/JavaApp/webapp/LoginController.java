@@ -1,6 +1,13 @@
 package JavaApp.webapp;
 
-import JavaApp.DataBase;
+
+
+
+
+
+
+
+
 import JavaApp.login.LoginRequest;
 
 import javax.enterprise.context.RequestScoped;
@@ -13,12 +20,13 @@ public class LoginController {
 
     @Inject
     private LoginRequest loginRequest;
+//    @Inject
+//    private ProfileRepository profileRepository;
+//
 
-    @Inject
-    private DataBase dataBase;
     public void login() {
 
-        if (dataBase.userExists(loginRequest.getUsername())) {
+        if (true) {
 
         }
         else
@@ -26,4 +34,5 @@ public class LoginController {
         System.out.println("Tried to log in using " + loginRequest.toString());
 
     }
+
 }

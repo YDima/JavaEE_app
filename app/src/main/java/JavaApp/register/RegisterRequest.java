@@ -2,6 +2,7 @@ package JavaApp.register;
 
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Named;
+import java.text.DateFormat;
 import java.util.Date;
 
 @Named
@@ -13,7 +14,7 @@ public class RegisterRequest {
     private String username;
     private String password;
     private String email;
-    private Date birthday;
+    private String birthday;
 
     public String getEmail() {
         return email;
@@ -22,10 +23,10 @@ public class RegisterRequest {
         this.email = email;
     }
 
-    public Date getBirthday() {
+    public String getBirthday() {
         return birthday;
     }
-    public void setBirthday(Date birthday) {
+    public void setBirthday(String birthday) {
         this.birthday = birthday;
     }
 
