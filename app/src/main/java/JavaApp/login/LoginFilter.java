@@ -16,6 +16,9 @@ public class LoginFilter extends HttpFilter {
     @Override
     protected void doFilter(HttpServletRequest req, HttpServletResponse res, FilterChain chain) throws IOException, ServletException {
         String registerURI = req.getContextPath() + "/register.xhtml";
+        String indexURI = req.getContextPath() + "/index.xhtml";
+        String loginURI = req.getContextPath() + "/login.xhtml";
+
         if ( req.getRequestURI().contains("/index.xhtml") && req.getSession().getAttribute("username") == null ) {
             res.sendRedirect(registerURI);
         } else {

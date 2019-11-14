@@ -1,20 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html" xmlns:ui="http://java.sun.com/jsf/facelets">
 
 <h:head>
     <title>App</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
 
-    <h:outputStylesheet name="img.jpg" library="images"/>
-    <h:outputStylesheet name="bootstrap.min.css" library="vendor"/>
-    <h:outputStylesheet name="animate.css" library="vendor"/>
-    <h:outputStylesheet name="hamburgers.min.css" library="vendor"/>
-    <h:outputStylesheet name="select2.min.css" library="vendor"/>
-    <h:outputStylesheet name="main.css" library="css"/>
-    <h:outputStylesheet name="util.css" library="css"/>
+    <ui:insert name="base">
+        <ui:include src="base.xhtml"></ui:include>
+    </ui:insert>
 </h:head>
 <h:body>
     <div class="main">
@@ -31,11 +27,8 @@
             </div>
         </div>
     </div>
-    <h:outputScript name="jquery-3.2.1.min.js" library="vendor" />
-    <h:outputScript name="popper.js" library="vendor" />
-    <h:outputScript name="bootstrap.min.js" library="vendor" />
-    <h:outputScript name="select2.min.js" library="vendor" />
-    <h:outputScript name="main.js" library="js" type="javascript"/>
-    <h:outputScript name="main.js" library="js" type="javascript"/>
+    <ui:insert name="js">
+        <ui:include src="js.xhtml"></ui:include>
+    </ui:insert>
 </h:body>
 </html>

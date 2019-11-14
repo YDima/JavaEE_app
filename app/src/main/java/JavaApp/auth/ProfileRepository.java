@@ -1,28 +1,31 @@
-//package JavaApp.auth;
-//
-//import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-//
-//import javax.enterprise.context.ApplicationScoped;
-//import javax.persistence.EntityManager;
-//import javax.persistence.PersistenceContext;
-//import javax.transaction.Transactional;
-//
-//@ApplicationScoped
-//public class ProfileRepository {
-//    @PersistenceContext
-//    private EntityManager em;
-//
-//    // startTx()
-//    @Transactional
-//    public void sampleCodeWithPC() {
-//        var profile = new ProfileEntity("pjanowiak");
-//
-//        em.persist(profile);
-//
-//        final ProfileEntity profileEntity = em.find(ProfileEntity.class, 7L);
-//        var list = em.createQuery("from ProfileEntity where name = :name", ProfileEntity.class)
-//                .setParameter("name", "pjanowiak2")
-//                .getResultList();
+package JavaApp.auth;
+
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+
+import javax.enterprise.context.ApplicationScoped;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import javax.transaction.Transactional;
+
+@ApplicationScoped
+public class ProfileRepository {
+    @PersistenceContext
+    private EntityManager em;
+
+    // startTx()
+    @Transactional
+    public void sampleCodeWithPC() {
+        var profile = new ProfileEntity("ydima3");
+        profile.setSurname(profile.getSurname());
+        profile.setPassword(profile.getPassword());
+        profile.setUsername(profile.getUsername());
+
+        em.persist(profile);
+
+        final ProfileEntity profileEntity = em.find(ProfileEntity.class, 7L);
+        var list = em.createQuery("from ProfileEntity where name = :name", ProfileEntity.class)
+                .setParameter("name", "ydima3")
+                .getResultList();
 //
 //        var passwordEncoder = new BCryptPasswordEncoder();
 //        final String rawPassword = "xGdXi7Qb5EK4";
@@ -34,5 +37,5 @@
 //        System.out.println("Does password match?: " + passwordEncoder.matches(rawPassword, hashedPassword));
 //
 //        System.out.println();
-//    }
-//}
+    }
+}

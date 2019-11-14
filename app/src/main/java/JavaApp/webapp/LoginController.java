@@ -8,6 +8,7 @@ package JavaApp.webapp;
 
 
 
+import JavaApp.auth.ProfileRepository;
 import JavaApp.login.LoginRequest;
 
 import javax.enterprise.context.RequestScoped;
@@ -20,14 +21,14 @@ public class LoginController {
 
     @Inject
     private LoginRequest loginRequest;
-//    @Inject
-//    private ProfileRepository profileRepository;
-//
+    @Inject
+    private ProfileRepository profileRepository;
+
 
     public void login() {
 
         if (true) {
-
+            profileRepository.sampleCodeWithPC();
         }
         else
 

@@ -6,15 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Log in</title>
 
-    <!--    <h:outputStylesheet rel="stylesheet" href="style.css" type="text/css"/> -->
 
-    <h:outputStylesheet name="img.jpg" library="images"/>
-    <h:outputStylesheet name="bootstrap.min.css" library="vendor"/>
-    <h:outputStylesheet name="animate.css" library="vendor"/>
-    <h:outputStylesheet name="hamburgers.min.css" library="vendor"/>
-    <h:outputStylesheet name="select2.min.css" library="vendor"/>
-    <h:outputStylesheet name="main.css" library="css"/>
-    <h:outputStylesheet name="util.css" library="css"/>
+
+    <ui:insert name="base">
+        <ui:include src="base.xhtml"></ui:include>
+    </ui:insert>
 </h:head>
 <h:body>
     <div class="container-login100" >
@@ -32,19 +28,19 @@
 
                         <div class="wrap-input100">
                             <h:outputLabel value="Username"/>
-                            <h:inputText validatorMessage="Username can have only small letters and numbers." value="#{loginRequest.username}" id="username" class="input100">
+                            <h:inputText value="#{loginRequest.username}" id="username" class="input100">
                                 <f:validateLength minimum="1" maximum="15"/>
                                 <f:validateRegex pattern="((?=.*\d)(?=.*[a-z]).{1,33})"/>
                             </h:inputText>
-                            <h:message for="username"/>
+                            <h:messages for="username" value = "#{msg[u]}"/>
                         </div>
                         <div class="wrap-input100">
                             <h:outputLabel value="Password"/>
-                            <h:inputSecret validatorMessage="Haslo Should have at least one small letter, one big letter, and numbers, and should be minimum of 8 characters long." value="#{loginRequest.password}" id="password" class="input100">
+                            <h:inputSecret value="#{loginRequest.password}" id="password" class="input100">
                                 <f:validateLength minimum="8" maximum="33"/>
                                 <f:validateRegex pattern="((?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{5,30})"/>
                             </h:inputSecret>
-                            <h:message for="password"/>
+                            <h:messages for="password"/>
                         </div>
 
                         <div class="container-login100-form-btn">
@@ -54,6 +50,7 @@
                         <div class="container-login100-form-btn">
                             <a class="login100-form-btn" href="register.xhtml">Register here</a>
                         </div>
+
                     </h:form>
 
                 </div>
@@ -61,16 +58,8 @@
 
         </div>
     </div>
-    <h:outputScript name="jquery-3.2.1.min.js" library="vendor" />
-    <h:outputScript name="popper.js" library="vendor" />
-    <h:outputScript name="bootstrap.min.js" library="vendor" />
-    <h:outputScript name="select2.min.js" library="vendor" />
-    <h:outputScript name="tilt.jquery.min.js" library="vendor" />
-    <h:outputScript>
-        $('.js-tilt').tilt({
-            scale: 1.1
-        })
-    </h:outputScript>
-    <h:outputScript name="main.js" library="js" type="javascript"/>
+    <ui:insert name="js">
+        <ui:include src="js.xhtml"></ui:include>
+    </ui:insert>
 </h:body>
 </html>
