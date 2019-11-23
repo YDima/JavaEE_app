@@ -28,17 +28,15 @@
 
                         <div class="wrap-input100">
                             <h:outputLabel value="Username"/>
-                            <h:inputText value="#{loginRequest.username}" id="username" class="input100">
-                                <f:validateLength minimum="1" maximum="15"/>
+                            <h:inputText validatorMessage="Username can have only small letters and numbers." value="#{loginRequest.username}" id="username" class="input100">
                                 <f:validateRegex pattern="((?=.*\d)(?=.*[a-z]).{1,33})"/>
                             </h:inputText>
-                            <h:messages for="username" value = "#{msg[u]}"/>
+                            <h:messages for="username"/>
                         </div>
                         <div class="wrap-input100">
                             <h:outputLabel value="Password"/>
-                            <h:inputSecret value="#{loginRequest.password}" id="password" class="input100">
-                                <f:validateLength minimum="8" maximum="33"/>
-                                <f:validateRegex pattern="((?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{5,30})"/>
+                            <h:inputSecret validatorMessage="Haslo Should have at least one small letter, one big letter, and numbers, and should be minimum of 8 characters long." value="#{loginRequest.password}" id="password" class="input100">
+                                <f:validateRegex pattern="((?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,33})"/>
                             </h:inputSecret>
                             <h:messages for="password"/>
                         </div>

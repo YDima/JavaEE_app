@@ -2,19 +2,34 @@ package JavaApp.register;
 
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Named;
-import java.text.DateFormat;
-import java.util.Date;
 
 @Named
 @RequestScoped
 public class RegisterRequest {
 
 
-    private String NameSurname;
+    private String name;
+    private String surname;
     private String username;
     private String password;
     private String email;
-    private String birthday;
+    private String birthDate;
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getSurname() {
+        return surname;
+    }
+
+    public void setSurname(String surname) {
+        this.surname = surname;
+    }
 
     public String getEmail() {
         return email;
@@ -23,11 +38,11 @@ public class RegisterRequest {
         this.email = email;
     }
 
-    public String getBirthday() {
-        return birthday;
+    public String getBirthDate() {
+        return birthDate;
     }
-    public void setBirthday(String birthday) {
-        this.birthday = birthday;
+    public void setBirthDate(String birthDate) {
+        this.birthDate = birthDate;
     }
 
     public String getUsername(){
@@ -42,21 +57,17 @@ public class RegisterRequest {
     public void setPassword (String password){
         this.password = password;
     }
-    public String getNameSurname() {
-        return NameSurname;
-    }
-    public void setNameSurname(String nameSurname) {
-        NameSurname = nameSurname;
-    }
+
 
     @Override
     public String toString() {
         return "RegisterRequest{" +
-                "NameSurname='" + NameSurname + '\'' +
+                "Name='" + name + '\'' +
+                ", Surname='" + surname + '\'' +
                 ", username='" + username + '\'' +
                 ", password='" + password + '\'' +
                 ", email='" + email + '\'' +
-                ", birthday=" + birthday +
+                ", birthday='" + birthDate + '\'' +
                 '}';
     }
 }
