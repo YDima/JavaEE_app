@@ -1,12 +1,16 @@
 package JavaApp.auth;
 
 
+
 import javax.persistence.*;
+
+
+
+
+
 @Entity
 @Table(name = "profile")
 public class User {
-
-
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -17,11 +21,21 @@ public class User {
     private String password;
     private String email;
     private String birthDate;
+    private boolean isAdmin;
+
+    public boolean isAdmin() {
+        return isAdmin;
+    }
+
+    public void setAdmin(boolean admin) {
+        isAdmin = admin;
+    }
 
     public User(String username, String password) {
         this.username = username;
         this.password = password;
     }
+
 
     public Long getId() { return id; }
 
@@ -89,5 +103,10 @@ public class User {
     public User() {
     }
 
+    public User(String username, String password, Boolean isAdmin) {
+        this.username = username;
+        this.password = password;
+        this.isAdmin = isAdmin;
+    }
 
 }
