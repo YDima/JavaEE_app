@@ -23,6 +23,17 @@ public class CategoryEntity {
     @JoinColumn(name="branch_id")
     private BranchEntity branch;
 
+    public CategoryEntity(String name, BranchEntity branch) {
+        this.name = name;
+        this.branch = branch;
+    }
+    public CategoryEntity() {
+
+    }
+
+    public CategoryEntity(String name) {
+        this.name = name;
+    }
 
     public Long getId() {
         return id;

@@ -34,6 +34,7 @@ CREATE TABLE category
     foreign key (branch_id) references branch(id)
 );
 
+
 CREATE TABLE auction
 (
     id   BIGSERIAL NOT NULL,

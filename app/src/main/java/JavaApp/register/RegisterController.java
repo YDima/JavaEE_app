@@ -43,6 +43,7 @@ public class RegisterController {
             var session = request.getSession(true);
             session.setAttribute("username", user.getUsername());
         }
+
     }
 }
 

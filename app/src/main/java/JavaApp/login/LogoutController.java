@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 
 
 
-
+@Named
 @RequestScoped
 public class LogoutController {
 

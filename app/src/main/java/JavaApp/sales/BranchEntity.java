@@ -23,6 +23,13 @@ public class BranchEntity {
     public BranchEntity(String name) {
         this.name = name;
     }
+    public BranchEntity() {
+    }
+
+    public BranchEntity(Long id, String name) {
+        this.id = id;
+        this.name = name;
+    }
 
     public Long getId() {
         return id;
@@ -40,3 +47,53 @@ public class BranchEntity {
         this.name = name;
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

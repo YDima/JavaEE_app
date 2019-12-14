@@ -3,10 +3,10 @@
         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:p="http://xmlns.jcp.org/jsf/html">
+      xmlns:ui="http://java.sun.com/jsf/facelets">
 
 <h:head>
-    <title>App</title>
+    <title>Admin Profile</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
 
@@ -16,27 +16,130 @@
 </h:head>
 <h:body>
     <div class="main">
-        <div style="text-align: center;">
-            <h2>Welcome to application!</h2>
-            <h:outputText value="#{msg['jaz.app.name']}"/>
+        <div style="child-align: top;">
+            <h:form class="login100-form validate-form">
 
-            <div class="container-login100-form-btn">
-                <a class="container-login100-form-btn" href="login.xhtml">Log in</a>
-            </div>
-            <p></p>
-            <h:form>
-                <div class="container-login100-form-btn">
-                    <p:commandButton value="logout" action="#{logoutController.logout}"/>
+                <div style="text-align: center;"><h:outputLabel value="Create new branch" style="align-self: center; font-size: xx-large"/></div>
+
+                <div class="wrap-input100">
+                    <h:outputLabel value="Branch name"/>
+                    <h:inputText value="#{branchRequest.name}" id="branch" class="input100"/>
                 </div>
+
+                <div class="container-login100-form-btn">
+                    <h:commandButton value="Create" class="login100-form-btn" action="#{branchController.createBranch}"/>
+                </div>
+
             </h:form>
-            <p></p>
-            <div class="container-login100-form-btn">
-                <a class="container-login100-form-btn" href="register.xhtml">Create new account</a>
-            </div>
+
         </div>
     </div>
+
+    <div class="main">
+        <div style="child-align: top;">
+            <h:form class="login100-form validate-form">
+
+                <div style="text-align: center;"><h:outputLabel value="Edit branch" style="align-self: center; font-size: xx-large"/></div>
+                <h:inputHidden value="#{branchController.editRequest.id}" />
+                <div class="wrap-input100">
+                    <h:outputLabel value="Branch name"/>
+                    <h:inputText value="#{branchRequest.name}" id="branch_name" class="input100"/>
+                </div>
+
+                <div class="wrap-input100">
+                    <h:outputLabel value="New branch name"/>
+                    <h:inputText value="#{branchController.editRequest.newName}" id="new_branch_name" class="input100"/>
+                </div>
+
+                <div class="container-login100-form-btn">
+                    <h:commandButton value="Edit" class="login100-form-btn" action="#{branchController.save}"/>
+                </div>
+
+            </h:form>
+
+        </div>
+    </div>
+
+    <div class="main">
+        <div style="child-align: top;">
+            <h:form class="login100-form validate-form">
+
+                <div style="text-align: center;"><h:outputLabel value="Create new category" style="align-self: center; font-size: xx-large"/></div>
+
+                <div class="wrap-input100">
+                    <h:outputLabel value="Category name"/>
+                    <h:inputText value="#{categoryRequest.name}" id="category" class="input100"/>
+                </div>
+
+                <div class="wrap-input100">
+                    <h:outputLabel value="Branch"/>
+                    <h:inputText value="#{categoryRequest.branch}" id="category_branch" class="input100"/>
+                </div>
+
+                <div class="container-login100-form-btn">
+                    <h:commandButton value="Create" class="login100-form-btn" action="#{categoryController.createCategory()}"/>
+                </div>
+
+            </h:form>
+
+        </div>
+    </div>
+
+    <div class="main">
+        <div style="child-align: top;">
+            <h:form class="login100-form validate-form">
+
+                <div style="text-align: center;"><h:outputLabel value="Edit category" style="align-self: center; font-size: xx-large"/></div>
+
+                <div class="wrap-input100">
+                    <h:outputLabel value="Category name"/>
+                    <h:inputText value="#{categoryRequest.name}" id="category_name" class="input100"/>
+                </div>
+
+                <div class="wrap-input100">
+                    <h:outputLabel value="Branch name"/>
+                    <h:inputText value="#{editCategoryRequest.branch}" id="new_category_branch" class="input100"/>
+                </div>
+
+                <div class="wrap-input100">
+                    <h:outputLabel value="New category name"/>
+                    <h:inputText value="#{editCategoryRequest.name}" id="new_category_name" class="input100"/>
+                </div>
+
+                <div class="container-login100-form-btn">
+                    <h:commandButton value="Edit" class="login100-form-btn" action="#{categoryController.editCategory()}"/>
+                </div>
+
+            </h:form>
+
+        </div>
+    </div>
+
     <ui:insert name="js">
         <ui:include src="js.xhtml"></ui:include>
     </ui:insert>
 </h:body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -40,6 +40,10 @@ public class AuctionEntity {
     @Column(name="owner_id")
     private Long ownerId;
 
+    public AuctionEntity() {
+
+    }
+
     public Long getId() {
         return id;
     }
@@ -101,6 +105,17 @@ public class AuctionEntity {
     }
 
     public void setOwnerId(Long ownerId) {
+        this.ownerId = ownerId;
+    }
+
+
+    public AuctionEntity(CategoryEntity category, String title, String description, BigDecimal price, List<PhotoEntity> photos, List<AuctionParameterEntity> parameters, Long ownerId) {
+        this.category = category;
+        this.title = title;
+        this.description = description;
+        this.price = price;
+        this.photos = photos;
+        this.parameters = parameters;
         this.ownerId = ownerId;
     }
 }
