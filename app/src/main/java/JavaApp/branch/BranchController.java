@@ -1,89 +1,87 @@
 package JavaApp.branch;
-
-
-
-import JavaApp.Retriever;
 import JavaApp.sales.BranchEntity;
 
-import javax.enterprise.context.RequestScoped;
+import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
-import javax.transaction.Transactional;
+import java.io.Serializable;
 
 @Named
-@RequestScoped
-public class BranchController{
-    @Inject
-    BranchRequest branchRequest;
+@ViewScoped
+public class BranchController implements Serializable {
 
     @Inject
     BranchRepository branchRepository;
 
-    @Inject
-    Retriever retriever;
+    private BranchEntity branch;
 
-    @PersistenceContext
-    private EntityManager em;
+    private Integer id;
 
-    private EditBranchRequest editBranchRequest;
-
-
-
-    @Transactional
-    public String createBranch(){
-        BranchEntity branch = new BranchEntity(branchRequest.getName());
-
-        addBranch(branch);
-        return "/adminProfile.xhtml?faces-redirect=true";
+    public Integer getId() {
+        return id;
     }
 
-    @Transactional
-    public String editBranch(){
-        save();
-        return "/adminProfile.xhtml?faces-redirect=true";
+    public void setId(Integer id) {
+        this.id = id;
     }
 
-    public void addBranch(BranchEntity branch){
-        if (ifBranchExists(branchRequest.getName())) {
-            throw new IllegalStateException(String.format("Branch %s already exists.", branch.getName()));
+    //    @Transactional
+//    public String createBranch(){
+//        BranchEntity branch = new BranchEntity(branchRequest.getName());
+//
+//        addBranch(branch);
+//        return "/adminProfile.xhtml?faces-redirect=true";
+//    }
+//
+//    public void addBranch(BranchEntity branch){
+//        if (ifBranchExists(branchRequest.getName())) {
+//            throw new IllegalStateException(String.format("Branch %s already exists.", branch.getName()));
+//        }
+//        else {
+//            branchRepository.save(branch);
+//        }
+//    }
+//
+//    public boolean ifBranchExists(String name) {
+//        BranchEntity branch = new BranchEntity(name);
+//        var list = em.createQuery("from BranchEntity where name = :name", BranchEntity.class)
+//                .setParameter("name", branch.getName())
+//                .getResultList();
+//        if (list.isEmpty())
+//            return false;
+//        else
+//            return true;
+//    }
+//
+//    public EditBranchRequest getEditRequest() {
+//        if (editBranchRequest == null) {
+//            editBranchRequest = createEditBranchRequest();
+//        }
+//        return editBranchRequest;
+//    }
+//
+//    public EditBranchRequest createEditBranchRequest(){
+//        if (retriever.contains("branchId")) {
+//            var branchId = retriever.getLong("branchId");
+//            var branch = branchRepository.findBranchById(branchId).orElseThrow();
+//            return new EditBranchRequest(branch);
+//        }
+//        return new EditBranchRequest();
+//    }
+
+    public BranchEntity getBranch(){
+        if (branch == null) {
+            if (id == null) {
+                branch = new BranchEntity();
+            } else {
+                branch = branchRepository.findBranchById(id);
+            }
         }
-        else {
-            branchRepository.saveBranch(branch);
-        }
-    }
-
-    public boolean ifBranchExists(String name) {
-        BranchEntity branch = new BranchEntity(name);
-        var list = em.createQuery("from BranchEntity where name = :name", BranchEntity.class)
-                .setParameter("name", branch.getName())
-                .getResultList();
-        if (list.isEmpty())
-            return false;
-        else
-            return true;
-    }
-
-    public EditBranchRequest getEditRequest() {
-        if (editBranchRequest == null) {
-            editBranchRequest = createEditBranchRequest();
-        }
-        return editBranchRequest;
-    }
-
-    public EditBranchRequest createEditBranchRequest(){
-        if (retriever.contains("branchId")) {
-            var branchId = retriever.getLong("branchId");
-            var branch = branchRepository.findBranchById(branchId).orElseThrow();
-            return new EditBranchRequest(branch);
-        }
-        return new EditBranchRequest();
+        return branch;
     }
 
     public String save() {
-        var branch = editBranchRequest.toBranch();
-        branchRepository.saveBranch(branch);
+        branchRepository.save(branch);
 
         return "/adminProfile.xhtml?faces-redirect=true";
     }

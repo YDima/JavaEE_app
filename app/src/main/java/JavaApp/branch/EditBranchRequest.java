@@ -12,15 +12,14 @@ import javax.inject.Named;
 @Named
 @RequestScoped
 public class EditBranchRequest {
-    private Long id;
+    private Integer id;
     private String name;
-    private String newName;
 
-    public Long getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -32,18 +31,8 @@ public class EditBranchRequest {
         this.name = name;
     }
 
-    public String getNewName() {
-        return newName;
-    }
-
-    public void setNewName(String newName) {
-        this.newName = newName;
-    }
-
     public EditBranchRequest() {
     }
-
-
     public EditBranchRequest(BranchEntity branch) {
         this.id = branch.getId();
         this.name = branch.getName();

@@ -10,6 +10,7 @@ import java.io.IOException;
 
 @WebFilter("*")
 public class LoginFilter extends HttpFilter {
+
     @Override
     protected void doFilter(HttpServletRequest req, HttpServletResponse res, FilterChain chain) throws IOException, ServletException {
         String registerURI = req.getContextPath() + "/register.xhtml";

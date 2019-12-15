@@ -1,6 +1,9 @@
 package JavaApp.sales;
 
 import javax.persistence.*;
+import java.io.Serializable;
+import java.util.Objects;
+
 
 
 
@@ -10,11 +13,11 @@ import javax.persistence.*;
 
 @Entity
 @Table(name="category")
-public class CategoryEntity {
+public class CategoryEntity implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+    private Integer id;
 
     @Column(name="name")
     private String name;
@@ -23,23 +26,12 @@ public class CategoryEntity {
     @JoinColumn(name="branch_id")
     private BranchEntity branch;
 
-    public CategoryEntity(String name, BranchEntity branch) {
-        this.name = name;
-        this.branch = branch;
-    }
-    public CategoryEntity() {
 
-    }
-
-    public CategoryEntity(String name) {
-        this.name = name;
-    }
-
-    public Long getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -58,4 +50,47 @@ public class CategoryEntity {
     public void setBranch(BranchEntity branch) {
         this.branch = branch;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        CategoryEntity category = (CategoryEntity) o;
+        return Objects.equals(id, category.id) &&
+                Objects.equals(name, category.name) &&
+                Objects.equals(branch, category.branch);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getId(), getName(), getBranch());
+    }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
