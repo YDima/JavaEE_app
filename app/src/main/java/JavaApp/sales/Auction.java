@@ -10,7 +10,7 @@ import java.util.List;
 
 @Entity
 @Table(name="auction")
-public class AuctionEntity {
+public class Auction {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name="id")
@@ -18,7 +18,7 @@ public class AuctionEntity {
 
     @ManyToOne //many auctions have same category
     @JoinColumn(name="category_id", nullable = false)
-    private CategoryEntity category;
+    private Category category;
 
     @Column(name="title")
     private String title;
@@ -32,15 +32,15 @@ public class AuctionEntity {
     @OneToMany(cascade = CascadeType.PERSIST, orphanRemoval = true, mappedBy = "auction")
 //    @JoinColumn(name="auction_id", nullable = false)
     @OrderColumn(name="order")
-    private List<PhotoEntity> photos;
+    private List<Photo> photos;
 
     @OneToMany(cascade = CascadeType.PERSIST, orphanRemoval = true, mappedBy = "auction")
-    private List<AuctionParameterEntity> parameters;
+    private List<AuctionParameter> parameters;
 
     @Column(name="owner_id")
     private Long ownerId;
 
-    public AuctionEntity() {
+    public Auction() {
 
     }
 
@@ -52,11 +52,11 @@ public class AuctionEntity {
         this.id = id;
     }
 
-    public CategoryEntity getCategory() {
+    public Category getCategory() {
         return category;
     }
 
-    public void setCategory(CategoryEntity category) {
+    public void setCategory(Category category) {
         this.category = category;
     }
 
@@ -84,19 +84,19 @@ public class AuctionEntity {
         this.price = price;
     }
 
-    public List<PhotoEntity> getPhotos() {
+    public List<Photo> getPhotos() {
         return photos;
     }
 
-    public void setPhotos(List<PhotoEntity> photos) {
+    public void setPhotos(List<Photo> photos) {
         this.photos = photos;
     }
 
-    public List<AuctionParameterEntity> getParameters() {
+    public List<AuctionParameter> getParameters() {
         return parameters;
     }
 
-    public void setParameters(List<AuctionParameterEntity> parameters) {
+    public void setParameters(List<AuctionParameter> parameters) {
         this.parameters = parameters;
     }
 
@@ -109,7 +109,7 @@ public class AuctionEntity {
     }
 
 
-    public AuctionEntity(CategoryEntity category, String title, String description, BigDecimal price, List<PhotoEntity> photos, List<AuctionParameterEntity> parameters, Long ownerId) {
+    public Auction(Category category, String title, String description, BigDecimal price, List<Photo> photos, List<AuctionParameter> parameters, Long ownerId) {
         this.category = category;
         this.title = title;
         this.description = description;

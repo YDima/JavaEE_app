@@ -13,25 +13,41 @@ import java.util.Objects;
 
 @Entity
 @Table(name="category")
-public class CategoryEntity implements Serializable {
+public class Category implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer id;
+    private Long id;
 
     @Column(name="name")
     private String name;
 
     @ManyToOne(optional = false)
     @JoinColumn(name="branch_id")
-    private BranchEntity branch;
+    private Branch branch;
 
+    public Category() {
+    }
 
-    public Integer getId() {
+    public Category(String name) {
+        this.name = name;
+    }
+    public Category(String name, Branch branch) {
+        this.name = name;
+        this.branch = branch;
+    }
+
+    public Category (Long id, String name, Branch branch) {
+        this.id = id;
+        this.name = name;
+        this.branch = branch;
+    }
+
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -43,11 +59,11 @@ public class CategoryEntity implements Serializable {
         this.name = name;
     }
 
-    public BranchEntity getBranch() {
+    public Branch getBranch() {
         return branch;
     }
 
-    public void setBranch(BranchEntity branch) {
+    public void setBranch(Branch branch) {
         this.branch = branch;
     }
 
@@ -55,7 +71,7 @@ public class CategoryEntity implements Serializable {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        CategoryEntity category = (CategoryEntity) o;
+        Category category = (Category) o;
         return Objects.equals(id, category.id) &&
                 Objects.equals(name, category.name) &&
                 Objects.equals(branch, category.branch);

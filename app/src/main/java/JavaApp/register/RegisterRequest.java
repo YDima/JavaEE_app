@@ -14,6 +14,7 @@ public class RegisterRequest {
     private String password;
     private String email;
     private String birthDate;
+    private Boolean isAdmin;
 
     public String getName() {
         return name;
@@ -58,16 +59,41 @@ public class RegisterRequest {
         this.password = password;
     }
 
+    public Boolean getAdmin() {
+        return isAdmin;
+    }
+
+    public void setAdmin(Boolean admin) {
+        this.isAdmin = admin;
+    }
 
     @Override
     public String toString() {
         return "RegisterRequest{" +
-                "Name='" + name + '\'' +
-                ", Surname='" + surname + '\'' +
+                "name='" + name + '\'' +
+                ", surname='" + surname + '\'' +
                 ", username='" + username + '\'' +
                 ", password='" + password + '\'' +
                 ", email='" + email + '\'' +
-                ", birthday='" + birthDate + '\'' +
+                ", birthDate='" + birthDate + '\'' +
+                ", isAdmin=" + isAdmin +
                 '}';
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

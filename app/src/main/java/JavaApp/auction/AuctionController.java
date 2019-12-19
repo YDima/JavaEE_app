@@ -1,7 +1,7 @@
 package JavaApp.auction;
 
 
-import JavaApp.sales.AuctionEntity;
+import JavaApp.sales.Auction;
 
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
@@ -23,7 +23,7 @@ public class AuctionController {
     private EntityManager em;
 
     public String createAuction(){
-        AuctionEntity auction = new AuctionEntity(auctionRequest.getCategory(), auctionRequest.getTitle(), auctionRequest.getDescription(), auctionRequest.getPrice(), auctionRequest.getPhotos(), auctionRequest.getParameters(), auctionRequest.getOwnerId());
+        Auction auction = new Auction(auctionRequest.getCategory(), auctionRequest.getTitle(), auctionRequest.getDescription(), auctionRequest.getPrice(), auctionRequest.getPhotos(), auctionRequest.getParameters(), auctionRequest.getOwnerId());
 
         em.persist(auction);
         return "/profile.xhtml?faces-redirect=true";

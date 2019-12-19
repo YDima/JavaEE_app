@@ -41,6 +41,8 @@
                             <h:messages for="password"/>
                         </div>
 
+                        <h:inputHidden value="#{loginRequest.admin}"/>
+
                         <div class="container-login100-form-btn">
                             <h:commandButton value="Login" class="login100-form-btn" action="#{loginController.login()}"/>
                         </div>

@@ -9,6 +9,7 @@ public class LoginRequest {
 
     private String username;
     private String password;
+    private Boolean isAdmin;
 
     public String getUsername(){
         return username;
@@ -23,12 +24,20 @@ public class LoginRequest {
         this.password = password;
     }
 
+    public Boolean getAdmin() {
+        return isAdmin;
+    }
+
+    public void setAdmin(Boolean admin) {
+        isAdmin = admin;
+    }
+
     @Override
     public String toString() {
         return "LoginRequest{" +
                 "username='" + username + '\'' +
                 ", password='" + password + '\'' +
+                ", isAdmin=" + isAdmin +
                 '}';
     }
-
 }

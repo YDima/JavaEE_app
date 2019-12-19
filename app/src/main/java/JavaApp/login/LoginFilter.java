@@ -42,4 +42,6 @@ public class LoginFilter extends HttpFilter {
         return req.getRequestURI().startsWith(
                 req.getContextPath() + ResourceHandler.RESOURCE_IDENTIFIER + "/");
     }
+
+
 }

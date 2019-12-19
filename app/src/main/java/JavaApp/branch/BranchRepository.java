@@ -1,12 +1,11 @@
 package JavaApp.branch;
 
-import JavaApp.sales.BranchEntity;
+import JavaApp.sales.Branch;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.transaction.Transactional;
-import javax.validation.constraints.NotNull;
 import java.util.List;
 
 
@@ -15,21 +14,25 @@ public class BranchRepository {
     @PersistenceContext
     EntityManager em;
 
-    public BranchEntity findBranchById(int branchId) {
-        var branch = em.find(BranchEntity.class, branchId);
+    public Branch findBranchById(long branchId) {
+        var branch = em.find(Branch.class, branchId);
         return branch;
     }
 
     @Transactional
-    public void save(@NotNull BranchEntity branch) {
+    public void save (Branch branch) {
         if (branch.getId()==null)
             em.persist(branch);
         else
             em.merge(branch);
     }
 
-    public List<BranchEntity> findAll() {
-        return em.createQuery("from BranchEntity", BranchEntity.class).getResultList();
+    public List<Branch> findAll() {
+        return em.createQuery("from Branch", Branch.class).getResultList();
+    }
+
+    public Branch find(long id) {
+        return em.find(Branch.class, id);
     }
 
 }

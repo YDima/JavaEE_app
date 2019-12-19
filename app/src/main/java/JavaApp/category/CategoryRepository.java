@@ -1,11 +1,11 @@
 package JavaApp.category;
 
-import JavaApp.sales.CategoryEntity;
+import JavaApp.sales.Category;
+
 import javax.enterprise.context.ApplicationScoped;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.transaction.Transactional;
-import javax.validation.constraints.NotNull;
 import java.util.List;
 
 
@@ -14,12 +14,17 @@ public class CategoryRepository {
     @PersistenceContext
     EntityManager em;
 
-    public List<CategoryEntity> findAllCategories() {
-        return em.createQuery("from CategoryEntity", CategoryEntity.class).getResultList();
+    public Category findCategoryById(long id) {
+        var category = em.find(Category.class, id);
+        return category;
+    }
+
+    public List<Category> findAllCategories() {
+        return em.createQuery("from Category", Category.class).getResultList();
     }
 
     @Transactional
-    public void save(@NotNull CategoryEntity category) {
+    public void save(Category category) {
         if (category.getId()==null)
             em.persist(category);
         else

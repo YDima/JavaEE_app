@@ -1,39 +1,36 @@
 package JavaApp.branch;
-import JavaApp.sales.BranchEntity;
 
-import javax.faces.view.ViewScoped;
+import JavaApp.Retriever;
+import JavaApp.sales.Branch;
+
+import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 import java.io.Serializable;
 
 @Named
-@ViewScoped
+@RequestScoped
 public class BranchController implements Serializable {
 
     @Inject
     BranchRepository branchRepository;
 
-    private BranchEntity branch;
+    @Inject
+    private EditBranchRequest editBranchRequest;
 
-    private Integer id;
+    @Inject
+    private Retriever retriever;
 
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
 
     //    @Transactional
 //    public String createBranch(){
-//        BranchEntity branch = new BranchEntity(branchRequest.getName());
+//        Branch branch = new Branch(branchRequest.getName());
 //
 //        addBranch(branch);
 //        return "/adminProfile.xhtml?faces-redirect=true";
 //    }
 //
-//    public void addBranch(BranchEntity branch){
+//    public void addBranch(Branch branch){
 //        if (ifBranchExists(branchRequest.getName())) {
 //            throw new IllegalStateException(String.format("Branch %s already exists.", branch.getName()));
 //        }
@@ -43,8 +40,8 @@ public class BranchController implements Serializable {
 //    }
 //
 //    public boolean ifBranchExists(String name) {
-//        BranchEntity branch = new BranchEntity(name);
-//        var list = em.createQuery("from BranchEntity where name = :name", BranchEntity.class)
+//        Branch branch = new Branch(name);
+//        var list = em.createQuery("from Branch where name = :name", Branch.class)
 //                .setParameter("name", branch.getName())
 //                .getResultList();
 //        if (list.isEmpty())
@@ -53,34 +50,35 @@ public class BranchController implements Serializable {
 //            return true;
 //    }
 //
-//    public EditBranchRequest getEditRequest() {
-//        if (editBranchRequest == null) {
-//            editBranchRequest = createEditBranchRequest();
-//        }
-//        return editBranchRequest;
-//    }
-//
-//    public EditBranchRequest createEditBranchRequest(){
-//        if (retriever.contains("branchId")) {
-//            var branchId = retriever.getLong("branchId");
-//            var branch = branchRepository.findBranchById(branchId).orElseThrow();
-//            return new EditBranchRequest(branch);
-//        }
-//        return new EditBranchRequest();
-//    }
-
-    public BranchEntity getBranch(){
-        if (branch == null) {
-            if (id == null) {
-                branch = new BranchEntity();
-            } else {
-                branch = branchRepository.findBranchById(id);
-            }
+    public EditBranchRequest getEditBranchRequest() {
+        if (editBranchRequest == null) {
+            editBranchRequest = createEditBranchRequest();
         }
-        return branch;
+        return editBranchRequest;
     }
 
+    public EditBranchRequest createEditBranchRequest(){
+        if (retriever.contains("id")) {
+            var id = retriever.getLong("id");
+            var branch = branchRepository.findBranchById(id);
+            return new EditBranchRequest(branch);
+        }
+        return new EditBranchRequest();
+    }
+
+//    public Branch getBranch(){
+//        if (branch == null) {
+//            if (id == null) {
+//                branch = new Branch();
+//            } else {
+//                branch = branchRepository.findBranchById(id);
+//            }
+//        }
+//        return branch;
+//    }
+
     public String save() {
+        var branch = new Branch(editBranchRequest.getName());
         branchRepository.save(branch);
 
         return "/adminProfile.xhtml?faces-redirect=true";

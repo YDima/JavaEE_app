@@ -81,6 +81,8 @@
                             <h:messages for="birthDate"></h:messages>
                         </div>
 
+                        <h:inputHidden value="#{registerRequest.admin}"/>
+
                         <div class="container-login100-form-btn">
                             <h:commandButton value="Register" class="login100-form-btn" action="#{registerController.register}"/>
                         </div>

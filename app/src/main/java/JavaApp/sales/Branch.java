@@ -7,32 +7,32 @@ import java.util.Objects;
 
 @Entity
 @Table(name="branch")
-public class BranchEntity implements Serializable {
+public class Branch implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name="id")
-    private Integer id;
+    private Long id;
 
     @Column(name = "name")
     private String name;
 
-    public BranchEntity(String name) {
+    public Branch(String name) {
         this.name = name;
     }
-    public BranchEntity() {
+    public Branch() {
     }
 
-    public BranchEntity(Integer id, String name) {
+    public Branch(Long id, String name) {
         this.id = id;
         this.name = name;
     }
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -47,8 +47,8 @@ public class BranchEntity implements Serializable {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof BranchEntity)) return false;
-        BranchEntity that = (BranchEntity) o;
+        if (!(o instanceof Branch)) return false;
+        Branch that = (Branch) o;
         return Objects.equals(getId(), that.getId()) &&
                 Objects.equals(getName(), that.getName());
     }

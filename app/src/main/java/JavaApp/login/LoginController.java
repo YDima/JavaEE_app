@@ -35,7 +35,7 @@ public class LoginController {
     public String login() {
         System.out.println("Tried to log in using " + loginRequest.toString());
 
-        if ( logIn(loginRequest.getUsername(), loginRequest.getPassword())) {
+        if ( logIn(loginRequest.getUsername(), loginRequest.getPassword(), loginRequest.getAdmin())) {
             return "/index.xhtml?faces-redirect=true";
         } else {
             FacesContext.getCurrentInstance().getExternalContext().getFlash().put("error-message", "Incorrect username or password");
@@ -43,10 +43,11 @@ public class LoginController {
         }
     }
 
-    public boolean logIn(String username, String password) {
+    public boolean logIn(String username, String password, Boolean isAdmin) {
         if (ifUserExists(username, password)) {
             var session = request.getSession(true);
             session.setAttribute("username", username);
+            session.setAttribute("isAdmin", isAdmin);
             return true;
         }
         return false;
@@ -80,3 +81,18 @@ public class LoginController {
 //        System.out.println();
 //    }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

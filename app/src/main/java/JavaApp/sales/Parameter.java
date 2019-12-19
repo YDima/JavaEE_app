@@ -10,7 +10,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(name="parameter")
-public class ParameterEntity {
+public class Parameter {
 
 
     @Id

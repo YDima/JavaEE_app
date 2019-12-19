@@ -10,7 +10,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(name="photo")
-public class PhotoEntity {
+public class Photo {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -22,7 +22,7 @@ public class PhotoEntity {
 
     @ManyToOne
     @JoinColumn(name="auction_id")
-    private AuctionEntity auction;
+    private Auction auction;
 
 
     public Long getId() {
@@ -41,11 +41,11 @@ public class PhotoEntity {
         this.link = link;
     }
 
-    public AuctionEntity getAuction() {
+    public Auction getAuction() {
         return auction;
     }
 
-    public void setAuction(AuctionEntity auction) {
+    public void setAuction(Auction auction) {
         this.auction = auction;
     }
 }

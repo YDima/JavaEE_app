@@ -10,35 +10,35 @@ import java.io.Serializable;
 
 @Entity
 @Table(name="auction_parameter")
-public class AuctionParameterEntity implements Serializable {
+public class AuctionParameter implements Serializable {
 
     private static final long serialVersionUID = 1l;
 
     @Id
     @ManyToOne(optional = false)
     @JoinColumn(name="auction_id")
-    private AuctionEntity auction;
+    private Auction auction;
 
     @Id
     @ManyToOne(optional = false)
-    private ParameterEntity parameter;
+    private Parameter parameter;
 
     @Column(name = "value")
     private String value;
 
-    public AuctionEntity getAuction() {
+    public Auction getAuction() {
         return auction;
     }
 
-    public void setAuction(AuctionEntity auction) {
+    public void setAuction(Auction auction) {
         this.auction = auction;
     }
 
-    public ParameterEntity getParameter() {
+    public Parameter getParameter() {
         return parameter;
     }
 
-    public void setParameter(ParameterEntity parameter) {
+    public void setParameter(Parameter parameter) {
         this.parameter = parameter;
     }
 

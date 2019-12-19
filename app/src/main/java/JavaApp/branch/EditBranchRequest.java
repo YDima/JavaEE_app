@@ -1,7 +1,7 @@
 package JavaApp.branch;
 
 
-import JavaApp.sales.BranchEntity;
+import JavaApp.sales.Branch;
 
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Named;
@@ -12,14 +12,14 @@ import javax.inject.Named;
 @Named
 @RequestScoped
 public class EditBranchRequest {
-    private Integer id;
+    private Long id;
     private String name;
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -33,13 +33,9 @@ public class EditBranchRequest {
 
     public EditBranchRequest() {
     }
-    public EditBranchRequest(BranchEntity branch) {
+    public EditBranchRequest(Branch branch) {
         this.id = branch.getId();
         this.name = branch.getName();
-    }
-
-    public BranchEntity toBranch(){
-        return new BranchEntity(id, name);
     }
 
 }

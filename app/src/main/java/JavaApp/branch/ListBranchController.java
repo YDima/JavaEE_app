@@ -1,7 +1,7 @@
 package JavaApp.branch;
 
 
-import JavaApp.sales.BranchEntity;
+import JavaApp.sales.Branch;
 
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
@@ -15,11 +15,8 @@ import java.util.List;
 public class ListBranchController implements Serializable {
     @Inject
     BranchRepository branchRepository;
-    private List<BranchEntity> branchEntityList;
 
-    public List<BranchEntity> getBranchList() {
-        if (branchEntityList == null)
-            branchEntityList = branchRepository.findAll();
+    public List<Branch> getBranchList() {
 
         return branchRepository.findAll();
     }

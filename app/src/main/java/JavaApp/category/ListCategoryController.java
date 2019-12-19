@@ -1,8 +1,8 @@
 package JavaApp.category;
 
-import JavaApp.sales.CategoryEntity;
+import JavaApp.sales.Category;
 
-import javax.faces.view.ViewScoped;
+import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 import java.io.Serializable;
@@ -12,18 +12,14 @@ import java.util.List;
 
 
 @Named
-@ViewScoped
+@RequestScoped
 public class ListCategoryController implements Serializable {
     @Inject
     CategoryRepository categoryRepository;
 
-    private List<CategoryEntity> categoryList;
+    public List<Category> getCategoryList() {
 
-    public List<CategoryEntity> getCategoryList() {
-        if (categoryList == null) {
-            categoryList = categoryRepository.findAllCategories();
-        }
-        return categoryList;
+        return categoryRepository.findAllCategories();
     }
 
 }

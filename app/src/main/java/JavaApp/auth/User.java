@@ -21,14 +21,14 @@ public class User {
     private String password;
     private String email;
     private String birthDate;
-    private boolean isAdmin;
+    private Boolean isAdmin;
 
-    public boolean isAdmin() {
+    public Boolean getAdmin() {
         return isAdmin;
     }
 
-    public void setAdmin(boolean admin) {
-        isAdmin = admin;
+    public void setAdmin(Boolean isAdmin) {
+        this.isAdmin = isAdmin;
     }
 
     public User(String username, String password) {
@@ -91,13 +91,14 @@ public class User {
         this.birthDate = birthDate;
     }
 
-    public User(String name, String surname, String username, String password, String email, String birthDate) {
+    public User(String name, String surname, String username, String password, String email, String birthDate, Boolean isAdmin) {
         this.name = name;
         this.surname = surname;
         this.username = username;
         this.password = password;
         this.email = email;
         this.birthDate = birthDate;
+        this.isAdmin = isAdmin;
     }
 
     public User() {

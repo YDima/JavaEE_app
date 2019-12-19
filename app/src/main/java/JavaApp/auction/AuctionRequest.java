@@ -1,9 +1,9 @@
 package JavaApp.auction;
 
 
-import JavaApp.sales.AuctionParameterEntity;
-import JavaApp.sales.CategoryEntity;
-import JavaApp.sales.PhotoEntity;
+import JavaApp.sales.AuctionParameter;
+import JavaApp.sales.Category;
+import JavaApp.sales.Photo;
 
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Named;
@@ -14,19 +14,19 @@ import java.util.List;
 @Named
 @RequestScoped
 public class AuctionRequest {
-    private CategoryEntity category;
+    private Category category;
     private String title;
     private String description;
     private BigDecimal price;
-    private List<PhotoEntity> photos;
-    private List<AuctionParameterEntity> parameters;
+    private List<Photo> photos;
+    private List<AuctionParameter> parameters;
     private Long ownerId;
 
-    public CategoryEntity getCategory() {
+    public Category getCategory() {
         return category;
     }
 
-    public void setCategory(CategoryEntity category) {
+    public void setCategory(Category category) {
         this.category = category;
     }
 
@@ -54,26 +54,25 @@ public class AuctionRequest {
         this.price = price;
     }
 
-    public List<PhotoEntity> getPhotos() {
+    public List<Photo> getPhotos() {
         return photos;
     }
 
-    public void setPhotos(List<PhotoEntity> photos) {
+    public void setPhotos(List<Photo> photos) {
         this.photos = photos;
     }
 
-    public List<AuctionParameterEntity> getParameters() {
+    public List<AuctionParameter> getParameters() {
         return parameters;
     }
 
-    public void setParameters(List<AuctionParameterEntity> parameters) {
+    public void setParameters(List<AuctionParameter> parameters) {
         this.parameters = parameters;
     }
 
     public Long getOwnerId() {
         return ownerId;
     }
-
     public void setOwnerId(Long ownerId) {
         this.ownerId = ownerId;
     }
