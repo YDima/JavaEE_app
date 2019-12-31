@@ -71,13 +71,6 @@ public class LoginController {
     }
 
 
-    public boolean ifUserIsAdmin(String username){
-
-        User user = new User(username);
-        var admin = em.createQuery("from User where username = :username", User.class)
-                .setParameter("username", user.getUsername())
-                .getResultList();
-    }
 //    @Transactional
 //    public void B(){
 //        var passwordEncoder = new BCryptPasswordEncoder();
