@@ -23,6 +23,10 @@ public class User {
     private String birthDate;
     private Boolean isAdmin;
 
+    public User(String username) {
+        this.username = username;
+    }
+
     public Boolean getAdmin() {
         return isAdmin;
     }

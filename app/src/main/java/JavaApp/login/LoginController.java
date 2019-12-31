@@ -36,12 +36,17 @@ public class LoginController {
         System.out.println("Tried to log in using " + loginRequest.toString());
 
         if ( logIn(loginRequest.getUsername(), loginRequest.getPassword(), loginRequest.getAdmin())) {
-            return "/index.xhtml?faces-redirect=true";
-        } else {
+            return "/profile.xhtml?faces-redirect=true";
+        }
+        else if (true){
+            return "/admin.xhtml?faces-redirect=true";
+        }
+        else {
             FacesContext.getCurrentInstance().getExternalContext().getFlash().put("error-message", "Incorrect username or password");
             return "/login.xhtml?faces-redirect=true";
         }
     }
+
 
     public boolean logIn(String username, String password, Boolean isAdmin) {
         if (ifUserExists(username, password)) {
@@ -66,7 +71,13 @@ public class LoginController {
     }
 
 
+    public boolean ifUserIsAdmin(String username){
 
+        User user = new User(username);
+        var admin = em.createQuery("from User where username = :username", User.class)
+                .setParameter("username", user.getUsername())
+                .getResultList();
+    }
 //    @Transactional
 //    public void B(){
 //        var passwordEncoder = new BCryptPasswordEncoder();

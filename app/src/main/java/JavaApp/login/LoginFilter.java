@@ -44,4 +44,13 @@ public class LoginFilter extends HttpFilter {
     }
 
 
+
+
+    private boolean isUserAdmin(HttpServletRequest request) {
+        var session = request.getSession(false);
+        if (session.getAttribute("isAdmin").equals(true))
+            return true;
+        else
+            return false;
+    }
 }

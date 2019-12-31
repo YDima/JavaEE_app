@@ -1,5 +1,6 @@
 package JavaApp.category;
 
+import JavaApp.sales.Branch;
 import JavaApp.sales.Category;
 
 import javax.enterprise.context.RequestScoped;
@@ -13,7 +14,7 @@ import javax.inject.Named;
 public class EditCategoryRequest {
     private Long id;
     private String name;
-    private Long branchId;
+    private Branch branchId;
 
     public Long getId() {
         return id;
@@ -31,11 +32,11 @@ public class EditCategoryRequest {
         this.name = name;
     }
 
-    public Long getBranchId() {
+    public Branch getBranchId() {
         return branchId;
     }
 
-    public void setBranchId(Long branchId) {
+    public void setBranchId(Branch branchId) {
         this.branchId = branchId;
     }
 
@@ -46,14 +47,52 @@ public class EditCategoryRequest {
     public EditCategoryRequest(Category category) {
         this.id = category.getId();
         this.name = category.getName();
-        this.branchId = category.getBranch().getId();
+        this.branchId = category.getBranchId();
     }
 
-    @Override
-    public String toString() {
-        return "EditCategoryRequest{" +
-                "name='" + name + '\'' +
-                ", branch=" + branchId +
-                '}';
-    }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -5,6 +5,7 @@ import java.io.Serializable;
 import java.util.Objects;
 
 
+@Embeddable
 @Entity
 @Table(name="branch")
 public class Branch implements Serializable {
@@ -22,7 +23,6 @@ public class Branch implements Serializable {
     }
     public Branch() {
     }
-
     public Branch(Long id, String name) {
         this.id = id;
         this.name = name;

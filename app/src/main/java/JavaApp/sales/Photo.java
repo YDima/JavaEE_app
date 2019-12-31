@@ -24,7 +24,6 @@ public class Photo {
     @JoinColumn(name="auction_id")
     private Auction auction;
 
-
     public Long getId() {
         return id;
     }

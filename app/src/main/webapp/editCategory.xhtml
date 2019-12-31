@@ -11,6 +11,8 @@
 
     <f:metadata>
         <f:viewParam name="id" value="#{categoryController.editCategoryRequest.id}"/>
+        <f:viewParam name="name" value="#{categoryController.editCategoryRequest.name}"/>
+        <f:viewParam name="branch" value="#{categoryController.editCategoryRequest.branchId}"/>
     </f:metadata>
 
     <h:head>
@@ -31,7 +33,7 @@
                     <div style="text-align: center;">
                         <h:outputLabel value="Edit category" style="align-self: center; font-size: large"/>
                     </div>
-                    <h:inputHidden id="id" value="#{categoryController.editCategoryRequest.id}"/>
+                    <h:inputHidden value="#{categoryController.editCategoryRequest.id}"/>
                     <div class="wrap-input100">
                         <h:outputLabel for="name" value = "Name"/>
                         <h:inputText id="name" value="#{categoryController.editCategoryRequest.name}" class="input100"/>
@@ -39,7 +41,7 @@
                     <div class="wrap-input100">
                         <h:outputLabel value = "Branch"/>
                         <h:selectOneMenu value="#{categoryController.editCategoryRequest.branchId}" class="input100">
-                            <f:selectItems value="#{listBranchController.branchList}" var="branch" itemLabel="#{branch.name}" itemValue="#{branch}"/>
+                            <f:selectItems value="#{listBranchController.branchList}" var="branch" itemLabel="#{branch.name}" itemValue="#{branch.id}"/>
                         </h:selectOneMenu>
                     </div>
                     <div class="container-login100-form-btn">

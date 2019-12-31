@@ -24,7 +24,7 @@ public class Category implements Serializable {
 
     @ManyToOne(optional = false)
     @JoinColumn(name="branch_id")
-    private Branch branch;
+    private Branch branchId;
 
     public Category() {
     }
@@ -32,15 +32,15 @@ public class Category implements Serializable {
     public Category(String name) {
         this.name = name;
     }
-    public Category(String name, Branch branch) {
+    public Category(String name, Branch branchId) {
         this.name = name;
-        this.branch = branch;
+        this.branchId = branchId;
     }
 
-    public Category (Long id, String name, Branch branch) {
+    public Category (Long id, String name, Branch branchId) {
         this.id = id;
         this.name = name;
-        this.branch = branch;
+        this.branchId = branchId;
     }
 
     public Long getId() {
@@ -59,12 +59,12 @@ public class Category implements Serializable {
         this.name = name;
     }
 
-    public Branch getBranch() {
-        return branch;
+    public Branch getBranchId() {
+        return branchId;
     }
 
-    public void setBranch(Branch branch) {
-        this.branch = branch;
+    public void setBranchId(Branch branchId) {
+        this.branchId = branchId;
     }
 
     @Override
@@ -74,12 +74,12 @@ public class Category implements Serializable {
         Category category = (Category) o;
         return Objects.equals(id, category.id) &&
                 Objects.equals(name, category.name) &&
-                Objects.equals(branch, category.branch);
+                Objects.equals(branchId, category.branchId);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getId(), getName(), getBranch());
+        return Objects.hash(getId(), getName(), getBranchId());
     }
 }
 

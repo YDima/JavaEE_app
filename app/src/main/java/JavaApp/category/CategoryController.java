@@ -31,7 +31,7 @@ public class CategoryController implements Serializable {
 //    public String createCategory(){
 //        Category category= new Category(categoryRequest.getName(), categoryRequest.getBranch());
 //        addCategory(category);
-//        return "/adminProfile.xhtml?faces-redirect=true";
+//        return "/admin.xhtml?faces-redirect=true";
 //    }
 //
 //    public void addCategory(Category category){
@@ -81,7 +81,7 @@ public class CategoryController implements Serializable {
 //
 //    public String saveCategory() {
 //        categoryRepository.save(category);
-//        return "/adminProfile.xhtml?faces-redirect=true";
+//        return "/admin.xhtml?faces-redirect=true";
 //    }
 
     public EditCategoryRequest getEditCategoryRequest() {
@@ -101,10 +101,10 @@ public class CategoryController implements Serializable {
     }
 
      public String save() {
-         Branch branch = branchRepository.findBranchById(editCategoryRequest.getBranchId());
-         var category = new Category(editCategoryRequest.getName(), branch);
+         Branch branch = branchRepository.findBranchById(editCategoryRequest.getBranchId().getId());
+         var category = new Category(editCategoryRequest.getId(), editCategoryRequest.getName(), branch);
          categoryRepository.save(category);
-         return "/adminProfile.xhtml?faces-redirect=true";
+        return "/admin.xhtml?faces-redirect=true";
      }
 
 }

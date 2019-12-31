@@ -10,7 +10,8 @@
 
 
     <f:metadata>
-        <f:viewParam name="id" value="#{branchController.id}"/>
+        <f:viewParam name="branchId" value="#{branchController.editBranchRequest.id}"/>
+        <f:viewParam name="name" value="#{branchController.editBranchRequest.name}"/>
     </f:metadata>
 
     <h:head>
@@ -31,6 +32,7 @@
                     <div style="text-align: center;">
                         <h:outputLabel value="Edit branch" style="align-self: center; font-size: large"/>
                     </div>
+                    <h:inputHidden value="#{branchController.editBranchRequest.id}" />
                     <div class="wrap-input100">
                         <h:outputLabel for="name" value = "Name"/>
                         <h:inputText id="name" value="#{branchController.editBranchRequest.name}" class="input100"/>
@@ -49,6 +51,29 @@
     </h:body>
 </f:view>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

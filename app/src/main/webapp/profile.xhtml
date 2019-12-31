@@ -20,54 +20,12 @@
 <h:body>
 
     <div class="wrap-login100">
-
-        <div class="main">
-            <div style="child-align: top;">
-                <h:form class="login100-form validate-form">
-
-                    <div style="text-align: center;"><h:outputLabel value="Create new auction" style="align-self: center; font-size: large"/></div>
-
-                    <div class="wrap-input100">
-                        <h:outputLabel value="Auction name"/>
-                        <h:inputText value="#{auctionRequest.title}"  class="input100"/>
-                    </div>
-
-                    <div class="wrap-input100">
-                        <h:outputLabel value = "Category"/>
-                        <h:selectOneMenu value="#{categoryController.category}" class="input100">
-                            <f:selectItems value="#{listCategoryController.categoryList}" var="branch" itemLabel="#{category.name}" itemValue="#{category}"/>
-                        </h:selectOneMenu>
-                    </div>
-
-                    <div class="wrap-input100">
-                        <h:outputLabel value="Description"/>
-                        <h:inputText value="#{auctionRequest.description}" class="input100"/>
-                    </div>
-
-                    <div class="wrap-input100">
-                        <h:outputLabel value="Price"/>
-                        <h:inputText value="#{auctionRequest.price}" class="input100"/>
-                    </div>
-
-                    <div class="wrap-input100">
-                        <h:outputLabel value="Photos"/>
-                        <h:inputText value="#{auctionRequest.photos}" class="input100"/>
-                    </div>
-
-                    <div class="wrap-input100">
-                        <h:outputLabel value="Parameters"/>
-                        <h:inputText value="#{auctionRequest.parameters}" class="input100"/>
-                    </div>
-
-                        <h:inputHidden value="#{auctionRequest.ownerId}" class="input100"/>
-
-                    <div class="container-login100-form-btn">
-                        <h:commandButton value="Create" class="login100-form-btn" action="#{branchController.save}"/>
-                    </div>
-                </h:form>
-            </div>
+        <div class="container-login100-form-btn">
+            <a class="container-login100-form-btn" href="editAuction.xhtml">Create product</a>
         </div>
-
+        <div class="container-login100-form-btn">
+            <a class="container-login100-form-btn" href="auctionList.xhtml">Your products</a>
+        </div>
     </div>
 
     <ui:insert name="js">

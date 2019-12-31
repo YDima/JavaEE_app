@@ -27,7 +27,7 @@ public class BranchController implements Serializable {
 //        Branch branch = new Branch(branchRequest.getName());
 //
 //        addBranch(branch);
-//        return "/adminProfile.xhtml?faces-redirect=true";
+//        return "/admin.xhtml?faces-redirect=true";
 //    }
 //
 //    public void addBranch(Branch branch){
@@ -78,10 +78,10 @@ public class BranchController implements Serializable {
 //    }
 
     public String save() {
-        var branch = new Branch(editBranchRequest.getName());
+        var branch = new Branch(editBranchRequest.getId(), editBranchRequest.getName());
         branchRepository.save(branch);
 
-        return "/adminProfile.xhtml?faces-redirect=true";
+        return "/admin.xhtml?faces-redirect=true";
     }
 }
 
