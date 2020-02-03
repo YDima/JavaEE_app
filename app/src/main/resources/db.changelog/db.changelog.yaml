@@ -13,3 +13,17 @@ databaseChangeLog:
         relativeToChangelogFile: true
         splitStatements: false
         path: 20200115_create_functionality.sql
+  - changeSet:
+      id: 20200201_alter_auction
+      author: Dmytro Yurchenko
+      sqlFile:
+          relativeToChangelogFile: true
+          splitStatements: false
+          path: 20200201_alter_auction.sql
+  - changeSet:
+      id: 20200201_alter_photo
+      author: Dmytro Yurchenko
+      sqlFile:
+        relativeToChangelogFile: true
+        splitStatements: false
+        path: 20200201_alter_photo.sql

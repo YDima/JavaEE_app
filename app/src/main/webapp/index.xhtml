@@ -11,7 +11,7 @@
         <ui:define name="content">
             <div class="topnav">
                 <a class="active" href="index.xhtml">Home</a>
-                <a href="user/createPhoto.xhtml">Create product</a>
+                <a href="user/createAuction.xhtml">Create product</a>
                 <a href="user/auctionList.xhtml">Your products</a>
                 <a href="admin/admin.xhtml">Profile</a>
                 <a href="login.xhtml">Log in</a>
@@ -26,9 +26,11 @@
                         <div class="leftcolumn">
                             <ui:repeat value="#{listAuctionController.auctionList}" var="auction">
                                 <div class="card">
-                                    <h:graphicImage value="#{}"/>
-                                    <h2 style="float: left; margin-left: 15px;"><h:outputText value="#{auction.title}"/></h2>
-                                    <h:outputText value=" By #{auction.owner_username}" style="float: left; margin-left: 15px;"/>
+                                    <ui:repeat value="#{listAuctionController.getPhotoByAuctionId(auction.id)}" var="photo">
+                                        <h:graphicImage value="#{photo.link}" height="50px" width="50px"/>
+                                    </ui:repeat>
+                                    <h2><h:outputText value="#{auction.title}"/></h2>
+                                    <h:outputText value="By #{auction.owner_username}" style="float: left; margin-left: 15px;"/>
                                     <p></p>
                                     <h5><h:outputText value="#{auction.price}"/></h5>
                                 </div>
@@ -44,3 +46,54 @@
     </ui:composition>
 </h:body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

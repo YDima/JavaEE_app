@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:p="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+<h:body>
+
+    <ui:composition template="../jsf/basic.xhtml">
+    <ui:param name="title" value="Create"/>
+    <ui:define name="content">
+    <div class="topnav">
+        <a href="../index.xhtml">Home</a>
+        <a class="active" href="createAuction.xhtml">Create product</a>
+        <a href="auctionList.xhtml">Your products</a>
+        <a href="../admin/admin.xhtml">Profile</a>
+        <a href="../login.xhtml">Log in</a>
+        <h:form>
+            <a><p:commandLink value="Log out" action="#{logoutController.logout}"/></a>
+        </h:form>
+    </div>
+
+    <div class="wrap-login100">
+        <div class="main">
+            <div style="child-align: top;">
+
+                <h:form class="login100-form validate-form">
+
+                    <div class="wrap-input100">
+
+                        <h:outputLabel value = "Parameters"/>
+
+                        <h:selectOneMenu value="#{auctionParameterController.auctionParameterRequest.auction_id}" class="input100">
+                            <f:selectItems value="#{listAuctionController.auctionListByUser}" var="auction" itemLabel="#{auction.title}" itemValue="#{auction.id}"/>
+                        </h:selectOneMenu>
+
+                        <h:selectOneMenu value="#{auctionParameterController.auctionParameterRequest.parameter_id}" class="input100">
+                            <f:selectItems value="#{listParameterController.parameterList}" var="parameter" itemLabel="#{parameter.name}" itemValue="#{parameter.id}"/>
+                        </h:selectOneMenu>
+
+                        <h:inputText value="#{auctionParameterController.auctionParameterRequest.value}" class="input100"/>
+
+                    </div>
+
+                    <div class="container-login100-form-btn">
+                        <h:commandButton value="Create" class="login100-form-btn" action="#{auctionParameterController.edit}"/>
+                    </div>
+                </h:form>
+
+                <h:form class="login100-form validate-form">
+
+                <div class="container-login100-form-btn">
+                        <h:commandButton value="Home" class="login100-form-btn" action="/index"/>
+                    </div>
+                </h:form>
+            </div>
+        </div>
+
+    </div>
+
+        <ui:insert name="js">
+            <ui:include src="../jsf/js.xhtml"></ui:include>
+        </ui:insert>
+    </ui:define>
+    </ui:composition>
+</h:body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

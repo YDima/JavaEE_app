@@ -1,0 +1,1 @@
+alter table auction drop column photo_id;

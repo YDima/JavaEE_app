@@ -12,7 +12,7 @@
     <ui:define name="content">
     <div class="topnav">
         <a href="../index.xhtml">Home</a>
-        <a class="active" href="createPhoto.xhtml">Create product</a>
+        <a class="active" href="createAuction.xhtml">Create product</a>
         <a href="auctionList.xhtml">Your products</a>
         <a href="../admin/admin.xhtml">Profile</a>
         <a href="../login.xhtml">Log in</a>
@@ -31,12 +31,7 @@
                         <h:outputLabel value="Auction name"/>
                         <h:inputText value="#{auctionRequest.title}"  class="input100"/>
                     </div>
-                    <div class="wrap-input100">
-                        <h:outputLabel value = "Photo"/>
-                        <h:selectOneMenu value="#{auctionController.auctionRequest.photo}" class="input100">
-                            <f:selectItems value="#{listPhotoController.photoList}" var="photo" itemLabel="#{photo.link}" itemValue="#{photo.id}"/>
-                        </h:selectOneMenu>
-                    </div>
+
                     <div class="wrap-input100">
                         <h:outputLabel value = "Category"/>
                         <h:selectOneMenu value="#{auctionController.auctionRequest.category_id}" class="input100">

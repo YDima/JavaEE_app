@@ -1,0 +1,1 @@
+alter table photo add column auction_id bigint not null references auction(id);

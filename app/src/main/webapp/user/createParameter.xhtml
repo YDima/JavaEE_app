@@ -12,7 +12,7 @@
     <ui:define name="content">
     <div class="topnav">
         <a href="../index.xhtml">Home</a>
-        <a class="active" href="createPhoto.xhtml">Create product</a>
+        <a class="active" href="createAuction.xhtml">Create product</a>
         <a href="auctionList.xhtml">Your products</a>
         <a href="../admin/admin.xhtml">Profile</a>
         <a href="../login.xhtml">Log in</a>
@@ -24,14 +24,6 @@
 
         <div class="main">
             <div style="child-align: top;">
-                <h:form class="login100-form validate-form">
-                    <div class="container-login100-form-btn">
-                        <h:commandButton value="Next" class="login100-form-btn" action="createAuction"/>
-                    </div>
-                    <div class="container-login100-form-btn">
-                        <h:commandButton value="Back" class="login100-form-btn" action="createPhoto"/>
-                    </div>
-                </h:form>
 
                 <h:form class="login100-form validate-form">
                     <div style="text-align: center;"><h:outputLabel value="Add parameter" style="align-self: center; font-size: large"/></div>
@@ -69,16 +61,6 @@
                     </div>
                 </h:form>
 
-                <h:outputText value="If your product doesn't have specific parameters, you can use basic parameters like color, size..., tap "/><a href="createAuction.xhtml">here</a>
-
-                <h:form class="login100-form validate-form">
-                    <div class="container-login100-form-btn">
-                        <h:commandButton value="Back" class="login100-form-btn" action="createPhoto"/>
-                    </div>
-                    <div class="container-login100-form-btn">
-                        <h:commandButton value="Next" class="login100-form-btn" action="createAuction"/>
-                    </div>
-                </h:form>
             </div>
         </div>
 
