@@ -1,56 +1,100 @@
 package JavaApp.auth;
 
 
-
-import javax.servlet.*;
+import javax.faces.application.ResourceHandler;
+import javax.servlet.FilterChain;
+import javax.servlet.ServletException;
 import javax.servlet.annotation.WebFilter;
+import javax.servlet.http.HttpFilter;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
+import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-
 @WebFilter("/admin/*")
-public class adminFilter implements Filter {
+public class adminFilter extends HttpFilter {
 
-        public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
+    @Override
+    protected void doFilter(HttpServletRequest request, HttpServletResponse response, FilterChain chain) throws IOException, ServletException {
 
-            HttpServletRequest httpRequest = (HttpServletRequest) request;
-            HttpSession session = httpRequest.getSession(false);
+        String registerURL = request.getContextPath() + "/register.xhtml";
+        String profileURL = request.getContextPath() + "/user/profile.xhtml";
+        String loginURL = request.getContextPath() + "/login.xhtml";
 
-            boolean isLoggedIn = (session != null && session.getAttribute("isAdmin") != null);
-
-            String loginURI = httpRequest.getContextPath() + "/admin/login";
-
-            boolean isLoginRequest = httpRequest.getRequestURI().equals(loginURI);
-
-            boolean isLoginPage = httpRequest.getRequestURI().endsWith("login.jsp");
-
-            if (isLoggedIn && (isLoginRequest || isLoginPage)) {
-                // the admin is already logged in and he's trying to login again
-                // then forwards to the admin's homepage
-                RequestDispatcher dispatcher = request.getRequestDispatcher("/admin/");
-                dispatcher.forward(request, response);
-
-            } else if (isLoggedIn || isLoginRequest) {
-                // continues the filter chain
-                // allows the request to reach the destination
-                chain.doFilter(request, response);
-
-            } else {
-                // the admin is not logged in, so authentication is required
-                // forwards to the Login page
-                RequestDispatcher dispatcher = request.getRequestDispatcher("login.jsp");
-                dispatcher.forward(request, response);
-
-            }
+        if (isResourceReq(request) || isSiteAllowed(request) || isUserLogged(request)) {
+            chain.doFilter(request, response);
 
         }
 
-        public void destroy() {
+        else {
+            response.sendRedirect(profileURL);
         }
 
-        public void init(FilterConfig fConfig) throws ServletException {
-        }
+    }
+
+    private boolean isUserLogged(HttpServletRequest req) {
+        var session = req.getSession(false);
+        if (session != null && session.getAttribute("username") != null && session.getAttribute("role").equals("admin"))
+            return true;
+        else
+            return false;
+    }
+
+    private boolean isSiteAllowed(HttpServletRequest req) {
+        return req.getRequestURI().equals(req.getContextPath() + "/login.xhtml") ||
+                req.getRequestURI().equals(req.getContextPath() + "/register.xhtml");
+    }
+
+    private boolean isResourceReq(HttpServletRequest req) {
+        return req.getRequestURI().startsWith(
+                req.getContextPath() + ResourceHandler.RESOURCE_IDENTIFIER + "/");
+    }
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 

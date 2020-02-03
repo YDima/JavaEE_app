@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+    <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+    <html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html"
+          xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:p="http://xmlns.jcp.org/jsf/html" xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <h:body>
+        <ui:composition template="../jsf/basic.xhtml">
+        <ui:param name="title" value="Create Branch"/>
+        <ui:define name="content">
+        <div class="topnav">
+            <a href="../index.xhtml">Home</a>
+            <a class="active" href="createBranch.xhtml">Create branch</a>
+            <a href="createCategory.xhtml">Create category</a>
+            <a href="admin.xhtml">Profile</a>
+            <a href="../login.xhtml">Log in</a>
+            <h:form>
+                <a><p:commandLink value="Log out" action="#{logoutController.logout}"/></a>
+            </h:form>
+        </div>
+        <div class="main">
+            <div style="child-align: top;">
+                <h:form class="login100-form validate-form">
+                    <div style="text-align: center;">
+                        <h:outputLabel value="Create branch" style="align-self: center; font-size: large"/>
+                    </div>
+                    <h:inputHidden value="#{branchController.branchRequest.id}" />
+                    <div class="wrap-input100">
+                        <h:outputLabel for="name" value = "Name"/>
+                        <h:inputText id="name" value="#{branchController.branchRequest.name}" class="input100"/>
+                    </div>
+                    <div class="container-login100-form-btn">
+                        <h:commandButton value="Save" action="#{branchController.save}" class="login100-form-btn"/>
+                    </div>
+                </h:form>
+
+            </div>
+        </div>
+            <ui:insert name="js">
+                <ui:include src="../jsf/js.xhtml"></ui:include>
+            </ui:insert>
+        </ui:define>
+        </ui:composition>
+    </h:body>
+
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

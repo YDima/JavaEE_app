@@ -8,6 +8,10 @@ import javax.persistence.*;
 
 
 
+
+
+
+
 @Entity
 @Table(name="photo")
 public class Photo {
@@ -18,11 +22,7 @@ public class Photo {
     private Long id;
 
     @Column(name="link")
-    private Long link;
-
-    @ManyToOne
-    @JoinColumn(name="auction_id")
-    private Auction auction;
+    private String link;
 
     public Long getId() {
         return id;
@@ -32,19 +32,19 @@ public class Photo {
         this.id = id;
     }
 
-    public Long getLink() {
+    public String getLink() {
         return link;
     }
 
-    public void setLink(Long link) {
+    public void setLink(String link) {
         this.link = link;
     }
 
-    public Auction getAuction() {
-        return auction;
+    public Photo() {
     }
 
-    public void setAuction(Auction auction) {
-        this.auction = auction;
+
+    public Photo (String link) {
+        this.link = link;
     }
 }

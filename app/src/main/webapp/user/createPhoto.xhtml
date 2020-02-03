@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:p="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+<h:body>
+    <ui:composition template="../jsf/basic.xhtml">
+    <ui:param name="title" value="Add photo"/>
+    <ui:define name="content">
+    <div class="topnav">
+        <a href="../index.xhtml">Home</a>
+        <a class="active" href="createPhoto.xhtml">Create product</a>
+        <a href="auctionList.xhtml">Your products</a>
+        <a href="../admin/admin.xhtml">Profile</a>
+        <a href="../login.xhtml">Log in</a>
+        <h:form>
+            <a><p:commandLink value="Log out" action="#{logoutController.logout}"/></a>
+        </h:form>
+    </div>
+    <div class="wrap-login100">
+
+        <div class="main">
+            <div style="child-align: top;">
+                <h:form class="login100-form validate-form">
+
+                    <div style="text-align: center;"><h:outputLabel value="Add photo" style="align-self: center; font-size: large"/></div>
+                    <div class="wrap-input100">
+                        <h:outputLabel value="Photo link"/>
+                        <h:inputText value="#{photoRequest.link}"  class="input100" required="true"/>
+                    </div>
+
+                    <div class="container-login100-form-btn">
+                        <h:commandButton value="Add photo" class="login100-form-btn" action="#{photoController.save}"/>
+                    </div>
+                </h:form>
+                <h:outputText value="If you had uploaded this picture before, tap "/><a href="createParameter.xhtml">here</a>
+            </div>
+        </div>
+    </div>
+
+        <ui:insert name="js">
+            <ui:include src="../jsf/js.xhtml"></ui:include>
+        </ui:insert>
+    </ui:define>
+    </ui:composition>
+</h:body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

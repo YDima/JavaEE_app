@@ -16,7 +16,7 @@ public class BranchController implements Serializable {
     BranchRepository branchRepository;
 
     @Inject
-    private EditBranchRequest editBranchRequest;
+    private BranchRequest branchRequest;
 
     @Inject
     private Retriever retriever;
@@ -50,38 +50,27 @@ public class BranchController implements Serializable {
 //            return true;
 //    }
 //
-    public EditBranchRequest getEditBranchRequest() {
-        if (editBranchRequest == null) {
-            editBranchRequest = createEditBranchRequest();
+    public BranchRequest getBranchRequest() {
+        if (branchRequest == null) {
+            branchRequest = createBranchRequest();
         }
-        return editBranchRequest;
+        return branchRequest;
     }
 
-    public EditBranchRequest createEditBranchRequest(){
+    public BranchRequest createBranchRequest(){
         if (retriever.contains("id")) {
             var id = retriever.getLong("id");
             var branch = branchRepository.findBranchById(id);
-            return new EditBranchRequest(branch);
+            return new BranchRequest(branch);
         }
-        return new EditBranchRequest();
+        return new BranchRequest();
     }
 
-//    public Branch getBranch(){
-//        if (branch == null) {
-//            if (id == null) {
-//                branch = new Branch();
-//            } else {
-//                branch = branchRepository.findBranchById(id);
-//            }
-//        }
-//        return branch;
-//    }
-
     public String save() {
-        var branch = new Branch(editBranchRequest.getId(), editBranchRequest.getName());
+        var branch = new Branch(branchRequest.getId(), branchRequest.getName());
         branchRepository.save(branch);
 
-        return "/admin.xhtml?faces-redirect=true";
+        return "/admin/admin.xhtml?faces-redirect=true";
     }
 }
 

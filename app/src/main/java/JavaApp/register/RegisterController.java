@@ -28,7 +28,7 @@ public class RegisterController {
     @Transactional
     public String register(){
         System.out.println("Tried to log in using " + registerRequest.toString());
-        User user = new User(registerRequest.getName(), registerRequest.getSurname(), registerRequest.getUsername(), registerRequest.getPassword(), registerRequest.getEmail(), registerRequest.getBirthDate(), registerRequest.getAdmin());
+        User user = new User(registerRequest.getName(), registerRequest.getSurname(), registerRequest.getUsername(), registerRequest.getPassword(), registerRequest.getEmail(), registerRequest.getBirthDate(), registerRequest.getRole());
 
         addUser(user);
         return "/index.xhtml?faces-redirect=true";
@@ -42,7 +42,8 @@ public class RegisterController {
             em.persist(user);
             var session = request.getSession(true);
             session.setAttribute("username", user.getUsername());
-            session.setAttribute("isAdmin", user.getAdmin());
+            session.setAttribute("role", user.getRole());
+
         }
 
     }

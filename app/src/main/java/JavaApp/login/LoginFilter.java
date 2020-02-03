@@ -20,7 +20,11 @@ public class LoginFilter extends HttpFilter {
         if (isResourceReq(req) || isSiteAllowed(req) || isUserLogged(req)) {
             chain.doFilter(req, res);
 
-        } else {
+        }
+        else if(req.getRequestURI().equals(indexURI)) {
+            chain.doFilter(req, res);
+        }
+        else {
             res.sendRedirect(loginURI);
         }
     }
@@ -46,11 +50,49 @@ public class LoginFilter extends HttpFilter {
 
 
 
-    private boolean isUserAdmin(HttpServletRequest request) {
-        var session = request.getSession(false);
-        if (session.getAttribute("isAdmin").equals(true))
-            return true;
-        else
-            return false;
-    }
+
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

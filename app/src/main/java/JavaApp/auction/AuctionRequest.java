@@ -1,9 +1,8 @@
 package JavaApp.auction;
 
 
+import JavaApp.sales.Auction;
 import JavaApp.sales.AuctionParameter;
-import JavaApp.sales.Category;
-import JavaApp.sales.Photo;
 
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Named;
@@ -14,20 +13,42 @@ import java.util.List;
 @Named
 @RequestScoped
 public class AuctionRequest {
-    private Category category;
+    private Long id;
+    private Long category_id;
     private String title;
     private String description;
     private BigDecimal price;
-    private List<Photo> photos;
+    private Long photo;
     private List<AuctionParameter> parameters;
-    private Long ownerId;
+    private String owner_username;
 
-    public Category getCategory() {
-        return category;
+    public AuctionRequest(Auction auction) {
+        this.id = auction.getId();
+        this.category_id = auction.getCategory_id();
+        this.title = auction.getTitle();
+        this.photo = auction.getPhoto();
+        this.description = auction.getDescription();
+        this.price = auction.getPrice();
+        this.owner_username = auction.getOwner_username();
     }
 
-    public void setCategory(Category category) {
-        this.category = category;
+    public AuctionRequest() {
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Long getCategory_id() {
+        return category_id;
+    }
+
+    public void setCategory_id(Long category_id) {
+        this.category_id = category_id;
     }
 
     public String getTitle() {
@@ -54,12 +75,12 @@ public class AuctionRequest {
         this.price = price;
     }
 
-    public List<Photo> getPhotos() {
-        return photos;
+    public Long getPhoto() {
+        return photo;
     }
 
-    public void setPhotos(List<Photo> photos) {
-        this.photos = photos;
+    public void setPhoto(Long photo) {
+        this.photo = photo;
     }
 
     public List<AuctionParameter> getParameters() {
@@ -70,23 +91,24 @@ public class AuctionRequest {
         this.parameters = parameters;
     }
 
-    public Long getOwnerId() {
-        return ownerId;
+    public String getOwner_username() {
+        return owner_username;
     }
-    public void setOwnerId(Long ownerId) {
-        this.ownerId = ownerId;
+    public void setOwner_username(String owner_username) {
+        this.owner_username = owner_username;
     }
 
     @Override
     public String toString() {
         return "AuctionRequest{" +
-                "category=" + category +
+                "category=" + category_id +
                 ", title='" + title + '\'' +
                 ", description='" + description + '\'' +
                 ", price=" + price +
-                ", photos=" + photos +
+                ", photos=" + photo +
                 ", parameters=" + parameters +
-                ", ownerId=" + ownerId +
+                ", owner_username=" + owner_username +
                 '}';
     }
 }
+

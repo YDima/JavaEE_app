@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:f="http://xmlns.jcp.org/jsf/core" xmlns:p="http://xmlns.jcp.org/jsf/html">
+<f:view>
+
+
+
+    <h:body>
+        <ui:composition template="../jsf/basic.xhtml">
+        <ui:param name="title" value="Products"/>
+        <ui:define name="content">
+        <div class="topnav">
+            <a href="../index.xhtml">Home</a>
+            <a href="createPhoto.xhtml">Create product</a>
+            <a class="active" href="auctionList.xhtml">Your products</a>
+            <a href="../admin/admin.xhtml">Profile</a>
+            <a href="../login.xhtml">Log in</a>
+            <h:form>
+                <a><p:commandLink value="Log out" action="#{logoutController.logout}"/></a>
+            </h:form>
+        </div>
+        <div class="wrap-login100">
+            <div class = "main">
+
+                <div class="list-group">
+                    <ui:repeat value="#{listAuctionController.auctionListByUser}" var="auction">
+                        <h:link styleClass="list-group-item list-group-item-action" outcome="editAuction">
+                            <f:param name="id" value="#{auction.id}"/>
+                            <f:param name="title" value="#{auction.title}"/>
+                            <f:param name="opis" value="#{auction.description}"/>
+                            <f:param name="price" value="#{auction.price}"/>
+                            <f:param name="photo" value="#{auction.photo}"/>
+                            <f:param name="category" value="#{auction.category_id}"/>
+                            <h:outputText value="Edit #{auction.title}"/>
+                        </h:link>
+                    </ui:repeat>
+                </div>
+
+            </div>
+        </div>
+            <ui:insert name="js">
+                <ui:include src="../jsf/js.xhtml"></ui:include>
+            </ui:insert>
+        </ui:define>
+        </ui:composition>
+    </h:body>
+</f:view>
+</html>

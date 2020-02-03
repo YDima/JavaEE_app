@@ -2,7 +2,6 @@ package JavaApp.category;
 
 import JavaApp.Retriever;
 import JavaApp.branch.BranchRepository;
-import JavaApp.sales.Branch;
 import JavaApp.sales.Category;
 
 import javax.enterprise.context.RequestScoped;
@@ -16,7 +15,7 @@ import java.io.Serializable;
 public class CategoryController implements Serializable {
 
    @Inject
-   private EditCategoryRequest editCategoryRequest;
+   private CategoryRequest categoryRequest;
 
    @Inject
    private Retriever retriever;
@@ -27,84 +26,27 @@ public class CategoryController implements Serializable {
    @Inject
    BranchRepository branchRepository;
 
-//    @Transactional
-//    public String createCategory(){
-//        Category category= new Category(categoryRequest.getName(), categoryRequest.getBranch());
-//        addCategory(category);
-//        return "/admin.xhtml?faces-redirect=true";
-//    }
-//
-//    public void addCategory(Category category){
-//        if (ifCategoryExists(categoryRequest.getName())) {
-//            throw new IllegalStateException(String.format("Category %s already exists.", category.getName()));
-//        }
-//        else {
-//            em.persist(category);
-//        }
-//    }
-//
-//    public boolean ifCategoryExists(String name) {
-//        Category category = new Category(name);
-//        var list = em.createQuery("from Category where name = :name", Category.class)
-//                .setParameter("name", category.getName())
-//                .getResultList();
-//        if (list.isEmpty())
-//            return false;
-//        else
-//            return true;
-//    }
-
-//    public List<BranchEntity> getBranchList() {
-//        if (branchList == null) {
-//            branchList = branchRepository.findAll();
-//        }
-//        return branchList;
-//    }
-//
-//    public CategoryEntity getCategory() {
-//        if (category == null) {
-//            category = new CategoryEntity();
-//        }
-//        return category;
-//    }
-//
-//    public BranchEntity getBranch(){
-//        if (branch == null) {
-//            if (id == null) {
-//                branch = new BranchEntity();
-//            } else {
-//                branch = branchRepository.findBranchById(id);
-//            }
-//        }
-//        return branch;
-//    }
-//
-//    public String saveCategory() {
-//        categoryRepository.save(category);
-//        return "/admin.xhtml?faces-redirect=true";
-//    }
-
-    public EditCategoryRequest getEditCategoryRequest() {
-        if (editCategoryRequest == null){
-            editCategoryRequest = createEditCategoryRequest();
+    public CategoryRequest getCategoryRequest() {
+        if (categoryRequest == null){
+            categoryRequest = createCategoryRequest();
         }
-        return editCategoryRequest;
+        return categoryRequest;
     }
 
-    private EditCategoryRequest createEditCategoryRequest() {
+    private CategoryRequest createCategoryRequest() {
         if (retriever.contains("id")) {
             var id = retriever.getLong("id");
             var category = categoryRepository.findCategoryById(id);
-            return new EditCategoryRequest(category);
+            return new CategoryRequest(category);
         }
-        return new EditCategoryRequest();
+        return new CategoryRequest();
     }
 
      public String save() {
-         Branch branch = branchRepository.findBranchById(editCategoryRequest.getBranchId().getId());
-         var category = new Category(editCategoryRequest.getId(), editCategoryRequest.getName(), branch);
+
+         var category = new Category(categoryRequest.getId(), categoryRequest.getName(), categoryRequest.getBranch_id());
          categoryRepository.save(category);
-        return "/admin.xhtml?faces-redirect=true";
+        return "/admin/admin.xhtml?faces-redirect=true";
      }
 
 }

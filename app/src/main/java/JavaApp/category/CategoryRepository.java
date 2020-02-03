@@ -25,7 +25,7 @@ public class CategoryRepository {
 
     @Transactional
     public void save(Category category) {
-        if (category.getId()==null && category.getBranchId()==null)
+        if (category.getId()==null && category.getBranch_id()==null)
             em.persist(category);
         else
             em.merge(category);

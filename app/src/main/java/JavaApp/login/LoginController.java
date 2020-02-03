@@ -31,15 +31,11 @@ public class LoginController {
     @Inject
     private HttpServletRequest request;
 
-
     public String login() {
         System.out.println("Tried to log in using " + loginRequest.toString());
 
-        if ( logIn(loginRequest.getUsername(), loginRequest.getPassword(), loginRequest.getAdmin())) {
-            return "/profile.xhtml?faces-redirect=true";
-        }
-        else if (true){
-            return "/admin.xhtml?faces-redirect=true";
+        if ( logIn(loginRequest.getUsername(), loginRequest.getPassword())) {
+            return "/admin/admin.xhtml?faces-redirect=true";
         }
         else {
             FacesContext.getCurrentInstance().getExternalContext().getFlash().put("error-message", "Incorrect username or password");
@@ -47,12 +43,15 @@ public class LoginController {
         }
     }
 
-
-    public boolean logIn(String username, String password, Boolean isAdmin) {
+    public boolean logIn(String username, String password) {
         if (ifUserExists(username, password)) {
+            User user = new User(username);
+            var role = em.createQuery("select role from User where username = :username", String.class)
+                    .setParameter("username", user.getUsername())
+                    .getSingleResult();
             var session = request.getSession(true);
             session.setAttribute("username", username);
-            session.setAttribute("isAdmin", isAdmin);
+            session.setAttribute("role", role);
             return true;
         }
         return false;
@@ -71,6 +70,7 @@ public class LoginController {
     }
 
 
+
 //    @Transactional
 //    public void B(){
 //        var passwordEncoder = new BCryptPasswordEncoder();
@@ -85,6 +85,7 @@ public class LoginController {
 //        System.out.println();
 //    }
 }
+
 
 
 

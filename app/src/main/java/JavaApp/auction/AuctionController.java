@@ -1,6 +1,7 @@
 package JavaApp.auction;
 
 
+import JavaApp.Retriever;
 import JavaApp.sales.Auction;
 
 import javax.enterprise.context.RequestScoped;
@@ -21,12 +22,78 @@ public class AuctionController {
     private HttpServletRequest request;
     @PersistenceContext
     private EntityManager em;
+    @Inject
+    private Retriever retriever;
+    @Inject
+    private AuctionRepository auctionRepository;
 
-    public String createAuction(){
-        Auction auction = new Auction(auctionRequest.getCategory(), auctionRequest.getTitle(), auctionRequest.getDescription(), auctionRequest.getPrice(), auctionRequest.getPhotos(), auctionRequest.getParameters(), auctionRequest.getOwnerId());
 
-        em.persist(auction);
-        return "/profile.xhtml?faces-redirect=true";
+    public AuctionRequest getAuctionRequest() {
+        if (auctionRequest == null) {
+            auctionRequest = createAuctionRequest();
+        }
+        return auctionRequest;
+    }
+
+    public AuctionRequest createAuctionRequest(){
+        if (retriever.contains("id")) {
+            var id = retriever.getLong("id");
+            var auction = auctionRepository.findAuctionById(id);
+            return new AuctionRequest(auction);
+        }
+        return new AuctionRequest();
+    }
+
+
+    public String save() {
+        var session = request.getSession(false);
+        var username = session.getAttribute("username");
+        var auction = new Auction(auctionRequest.getId(), auctionRequest.getCategory_id(), auctionRequest.getTitle(), auctionRequest.getPhoto(), auctionRequest.getDescription(), auctionRequest.getPrice(), ( String ) username);
+        auctionRepository.save(auction);
+
+        return "auctionParameters.xhtml?faces-redirect=true";
     }
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -34,6 +34,16 @@ CREATE TABLE category
     foreign key (branch_id) references branch(id)
 );
 
+CREATE TABLE photo
+(
+    id   BIGSERIAL NOT NULL,
+    link VARCHAR   NOT NULL,
+
+
+    PRIMARY KEY (id)
+);
+
+
 
 CREATE TABLE auction
 (
@@ -42,26 +52,19 @@ CREATE TABLE auction
     title VARCHAR   NOT NULL,
     description VARCHAR   NOT NULL,
     price numeric(9,2)   NOT NULL,
-    owner_id bigint not null,
+    owner_username varchar not null,
+    photo_id bigint not null,
 
     PRIMARY KEY (id),
     foreign key (category_id) references category(id),
-    foreign key (owner_id) references profile(id)
+    foreign key (owner_username) references profile(username),
+    foreign key (photo_id) references photo(id)
 );
 
-CREATE TABLE photo
-(
-    id   BIGSERIAL NOT NULL,
-    link VARCHAR   NOT NULL,
-    auction_id bigint not null,
-
-    PRIMARY KEY (id),
-    foreign key (auction_id) references auction(id)
-);
 
 CREATE TABLE auction_parameter
 (
-    auction_id   BIGSERIAL NOT NULL,
+    auction_id   bigint NOT NULL,
     parameter_id bigint not null,
     value varchar not null,
 
@@ -69,3 +72,28 @@ CREATE TABLE auction_parameter
     foreign key (auction_id) references auction(id),
     foreign key (parameter_id) references parameter(id)
 );
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

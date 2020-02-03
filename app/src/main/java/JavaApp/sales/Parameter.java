@@ -3,11 +3,6 @@ package JavaApp.sales;
 import javax.persistence.*;
 
 
-
-
-
-
-
 @Entity
 @Table(name="parameter")
 public class Parameter {
@@ -36,5 +31,15 @@ public class Parameter {
     public void setName(String name) {
         this.name = name;
     }
+
+    public Parameter() {
+    }
+
+
+    public Parameter(Long id, String name) {
+        this.id = id;
+        this.name = name;
+    }
+
 
 }

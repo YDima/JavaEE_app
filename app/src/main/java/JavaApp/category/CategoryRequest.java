@@ -1,6 +1,5 @@
 package JavaApp.category;
 
-import JavaApp.sales.Branch;
 import JavaApp.sales.Category;
 
 import javax.enterprise.context.RequestScoped;
@@ -11,10 +10,10 @@ import javax.inject.Named;
 
 @Named
 @RequestScoped
-public class EditCategoryRequest {
+public class CategoryRequest {
     private Long id;
     private String name;
-    private Branch branchId;
+    private Long branch_id;
 
     public Long getId() {
         return id;
@@ -32,22 +31,22 @@ public class EditCategoryRequest {
         this.name = name;
     }
 
-    public Branch getBranchId() {
-        return branchId;
+    public Long getBranch_id() {
+        return branch_id;
     }
 
-    public void setBranchId(Branch branchId) {
-        this.branchId = branchId;
+    public void setBranch_id(Long branch_id) {
+        this.branch_id = branch_id;
     }
 
-    public EditCategoryRequest() {
+    public CategoryRequest() {
 
     }
 
-    public EditCategoryRequest(Category category) {
+    public CategoryRequest(Category category) {
         this.id = category.getId();
         this.name = category.getName();
-        this.branchId = category.getBranchId();
+        this.branch_id = category.getBranch_id();
     }
 
 }

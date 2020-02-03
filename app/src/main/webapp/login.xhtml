@@ -2,17 +2,11 @@
 <!DOCTYPE html PUBLIC "-//W3//DTD XHTML 1.0 Transitional//EN"
         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html" xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:f="http://xmlns.jcp.org/jsf/core">
-<h:head>
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Log in</title>
 
-
-
-    <ui:insert name="base">
-        <ui:include src="base.xhtml"></ui:include>
-    </ui:insert>
-</h:head>
 <h:body>
+    <ui:composition template="jsf/basic.xhtml">
+    <ui:param name="title" value="Log in"/>
+    <ui:define name="content">
     <div class="container-login100" >
         <div class="wrap-login100">
             <div class="login100-pic js-tilt">
@@ -29,7 +23,7 @@
                         <div class="wrap-input100">
                             <h:outputLabel value="Username"/>
                             <h:inputText validatorMessage="Username can have only small letters and numbers." value="#{loginRequest.username}" id="username" class="input100">
-                                <f:validateRegex pattern="((?=.*\d)(?=.*[a-z]).{1,33})"/>
+                                <f:validateRegex pattern="^[a-zA-Z0-9]+$"/>
                             </h:inputText>
                             <h:messages for="username"/>
                         </div>
@@ -41,12 +35,9 @@
                             <h:messages for="password"/>
                         </div>
 
-                        <h:inputHidden value="#{loginRequest.admin}"/>
-
                         <div class="container-login100-form-btn">
                             <h:commandButton value="Login" class="login100-form-btn" action="#{loginController.login()}"/>
                         </div>
-
                         <div class="container-login100-form-btn">
                             <a class="login100-form-btn" href="register.xhtml">Register here</a>
                         </div>
@@ -59,10 +50,19 @@
         </div>
     </div>
     <ui:insert name="js">
-        <ui:include src="js.xhtml"></ui:include>
+        <ui:include src="jsf/js.xhtml"></ui:include>
     </ui:insert>
+    </ui:define>
+    </ui:composition>
 </h:body>
 </html>
+
+
+
+
+
+
+
 
 
 

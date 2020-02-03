@@ -11,7 +11,7 @@ import javax.inject.Named;
 
 @Named
 @RequestScoped
-public class EditBranchRequest {
+public class BranchRequest {
     private Long id;
     private String name;
 
@@ -31,9 +31,9 @@ public class EditBranchRequest {
         this.name = name;
     }
 
-    public EditBranchRequest() {
+    public BranchRequest() {
     }
-    public EditBranchRequest(Branch branch) {
+    public BranchRequest(Branch branch) {
         this.id = branch.getId();
         this.name = branch.getName();
     }

@@ -9,7 +9,8 @@ CREATE TABLE profile
       password VARCHAR   NOT NULL,
       email varchar not null,
       birthDate varchar not null,
-      isAdmin boolean not null,
+      role varchar not null,
 
-      PRIMARY KEY (id)
+      PRIMARY KEY (username)
   );
+

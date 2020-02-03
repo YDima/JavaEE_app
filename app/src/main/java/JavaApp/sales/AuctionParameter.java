@@ -15,31 +15,39 @@ public class AuctionParameter implements Serializable {
     private static final long serialVersionUID = 1l;
 
     @Id
-    @ManyToOne(optional = false)
-    @JoinColumn(name="auction_id")
-    private Auction auction;
+    @Column(name="auction_id")
+    private Long auction_id;
 
     @Id
-    @ManyToOne(optional = false)
-    private Parameter parameter;
+    @Column (name = "parameter_id")
+    private Long parameter_id;
 
     @Column(name = "value")
     private String value;
 
-    public Auction getAuction() {
-        return auction;
+    public AuctionParameter(Long auction_id, Long parameter_id, String value) {
+        this.auction_id = auction_id;
+        this.parameter_id = parameter_id;
+        this.value = value;
     }
 
-    public void setAuction(Auction auction) {
-        this.auction = auction;
+    public AuctionParameter() {
     }
 
-    public Parameter getParameter() {
-        return parameter;
+    public Long getAuction_id() {
+        return auction_id;
     }
 
-    public void setParameter(Parameter parameter) {
-        this.parameter = parameter;
+    public void setAuction_id(Long auction_id) {
+        this.auction_id = auction_id;
+    }
+
+    public Long getParameter_id() {
+        return parameter_id;
+    }
+
+    public void setParameter_id(Long parameter_id) {
+        this.parameter_id = parameter_id;
     }
 
     public String getValue() {

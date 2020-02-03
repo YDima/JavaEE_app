@@ -5,37 +5,42 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html"
       xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:p="http://xmlns.jcp.org/jsf/html">
 
-<h:head>
-    <title>App</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-
-
-    <ui:insert name="base">
-        <ui:include src="base.xhtml"></ui:include>
-    </ui:insert>
-</h:head>
 <h:body>
-    <div class="main">
-        <div style="text-align: center;">
-            <h2>Welcome to <h:outputText value="#{msg['app.name']}"/>!</h2>
+    <ui:composition template="jsf/basic.xhtml">
+        <ui:param name="title" value="Home"/>
+        <ui:define name="content">
+            <div class="topnav">
+                <a class="active" href="index.xhtml">Home</a>
+                <a href="user/createPhoto.xhtml">Create product</a>
+                <a href="user/auctionList.xhtml">Your products</a>
+                <a href="admin/admin.xhtml">Profile</a>
+                <a href="login.xhtml">Log in</a>
+                <h:form>
+                    <a><p:commandLink value="Log out" action="#{logoutController.logout}"/></a>
+                </h:form>
+            </div>
 
-            <p></p>
-            <h:form>
-                <div class="container-login100-form-btn">
-                    <p:commandButton value="logout" action="#{logoutController.logout}"/>
+            <div class="main">
+                <div style="text-align: center;">
+                    <div class="row">
+                        <div class="leftcolumn">
+                            <ui:repeat value="#{listAuctionController.auctionList}" var="auction">
+                                <div class="card">
+                                    <h:graphicImage value="#{}"/>
+                                    <h2 style="float: left; margin-left: 15px;"><h:outputText value="#{auction.title}"/></h2>
+                                    <h:outputText value=" By #{auction.owner_username}" style="float: left; margin-left: 15px;"/>
+                                    <p></p>
+                                    <h5><h:outputText value="#{auction.price}"/></h5>
+                                </div>
+                            </ui:repeat>
+                        </div>
+                    </div>
                 </div>
-            </h:form>
-            <p></p>
-            <div class="container-login100-form-btn">
-                <a class="container-login100-form-btn" href="adminProfile.admin.xhtml">Admin</a>
             </div>
-            <div class="container-login100-form-btn">
-                <a class="container-login100-form-btn" href="profile.xhtml">profile</a>
-            </div>
-        </div>
-    </div>
-    <ui:insert name="js">
-        <ui:include src="js.xhtml"></ui:include>
-    </ui:insert>
+            <ui:insert name="js">
+                <ui:include src="jsf/js.xhtml"></ui:include>
+            </ui:insert>
+        </ui:define>
+    </ui:composition>
 </h:body>
 </html>

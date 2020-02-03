@@ -21,18 +21,18 @@ public class User {
     private String password;
     private String email;
     private String birthDate;
-    private Boolean isAdmin;
+    private String role = "user";
 
     public User(String username) {
         this.username = username;
     }
 
-    public Boolean getAdmin() {
-        return isAdmin;
+    public String getRole() {
+        return role;
     }
 
-    public void setAdmin(Boolean isAdmin) {
-        this.isAdmin = isAdmin;
+    public void setRole(String role) {
+        this.role = role;
     }
 
     public User(String username, String password) {
@@ -95,23 +95,23 @@ public class User {
         this.birthDate = birthDate;
     }
 
-    public User(String name, String surname, String username, String password, String email, String birthDate, Boolean isAdmin) {
+    public User(String name, String surname, String username, String password, String email, String birthDate, String role) {
         this.name = name;
         this.surname = surname;
         this.username = username;
         this.password = password;
         this.email = email;
         this.birthDate = birthDate;
-        this.isAdmin = isAdmin;
+        this.role = role;
     }
 
     public User() {
     }
 
-    public User(String username, String password, Boolean isAdmin) {
+    public User(String username, String password, String role) {
         this.username = username;
         this.password = password;
-        this.isAdmin = isAdmin;
+        this.role = role;
     }
 
 }

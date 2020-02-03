@@ -14,7 +14,7 @@ public class RegisterRequest {
     private String password;
     private String email;
     private String birthDate;
-    private Boolean isAdmin;
+    private String role = "user";
 
     public String getName() {
         return name;
@@ -59,12 +59,12 @@ public class RegisterRequest {
         this.password = password;
     }
 
-    public Boolean getAdmin() {
-        return isAdmin;
+    public String getRole() {
+        return role;
     }
 
-    public void setAdmin(Boolean admin) {
-        this.isAdmin = admin;
+    public void setRole(String role) {
+        this.role = role;
     }
 
     @Override
@@ -76,7 +76,7 @@ public class RegisterRequest {
                 ", password='" + password + '\'' +
                 ", email='" + email + '\'' +
                 ", birthDate='" + birthDate + '\'' +
-                ", isAdmin=" + isAdmin +
+                ", role=" + role +
                 '}';
     }
 }

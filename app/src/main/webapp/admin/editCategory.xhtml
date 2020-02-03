@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:f="http://xmlns.jcp.org/jsf/core" xmlns:p="http://xmlns.jcp.org/jsf/html">
+<f:view>
+
+
+
+
+    <f:metadata>
+        <f:viewParam name="id" value="#{categoryController.categoryRequest.id}"/>
+        <f:viewParam name="name" value="#{categoryController.categoryRequest.name}"/>
+        <f:viewParam name="branch" value="#{categoryController.categoryRequest.branch_id}"/>
+    </f:metadata>
+
+    <h:body>
+        <ui:composition template="../jsf/basic.xhtml">
+        <ui:param name="title" value="Profile"/>
+        <ui:define name="content">
+        <div class="topnav">
+            <a href="../index.xhtml">Home</a>
+            <a href="createBranch.xhtml">Create branch</a>
+            <a href="createCategory.xhtml">Create category</a>
+            <a class="active" href="admin.xhtml">Profile</a>
+            <a href="../login.xhtml">Log in</a>
+            <h:form>
+                <a><p:commandLink value="Log out" action="#{logoutController.logout}"/></a>
+            </h:form>
+        </div>
+        <div class="main">
+            <div style="child-align: top;">
+                <h:form class="login100-form validate-form">
+                    <div style="text-align: center;">
+                        <h:outputLabel value="Edit category" style="align-self: center; font-size: large"/>
+                    </div>
+                    <h:inputHidden value="#{categoryController.categoryRequest.id}"/>
+                    <div class="wrap-input100">
+                        <h:outputLabel for="name" value = "Name"/>
+                        <h:inputText id="name" value="#{categoryController.categoryRequest.name}" class="input100"/>
+                    </div>
+                    <div class="wrap-input100">
+                        <h:outputLabel value = "Branch"/>
+                        <h:selectOneMenu value="#{categoryController.categoryRequest.branch_id}" class="input100">
+                            <f:selectItems value="#{listBranchController.branchList}" var="branch" itemLabel="#{branch.name}" itemValue="#{branch.id}"/>
+                        </h:selectOneMenu>
+                    </div>
+                    <div class="container-login100-form-btn">
+                        <h:commandButton value="Save" action="#{categoryController.save}" class="login100-form-btn"/>
+                    </div>
+                </h:form>
+
+            </div>
+        </div>
+            <ui:insert name="js">
+                <ui:include src="../jsf/js.xhtml"></ui:include>
+            </ui:insert>
+        </ui:define>
+        </ui:composition>
+    </h:body>
+</f:view>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
