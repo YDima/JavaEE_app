@@ -23,19 +23,19 @@
             <div class="main">
                 <div style="text-align: center;">
                     <div class="row">
-                        <div class="leftcolumn">
-                            <ui:repeat value="#{listAuctionController.auctionList}" var="auction">
-                                <div class="card">
-                                    <ui:repeat value="#{listAuctionController.getPhotoByAuctionId(auction.id)}" var="photo">
-                                        <h:graphicImage value="#{photo.link}" height="50px" width="50px"/>
-                                    </ui:repeat>
-                                    <h2><h:outputText value="#{auction.title}"/></h2>
-                                    <h:outputText value="By #{auction.owner_username}" style="float: left; margin-left: 15px;"/>
-                                    <p></p>
-                                    <h5><h:outputText value="#{auction.price}"/></h5>
+                        <ui:repeat value="#{listAuctionController.auctionList}" var="auction">
+                            <div class="card">
+                                <ui:repeat value="#{listAuctionController.getPhotoByAuctionId(auction.id)}" var="photo">
+                                    <h:graphicImage value="#{photo.link}" style="width:100%"/>
+                                </ui:repeat>
+                                <h2><h:outputText value="#{auction.title}"/></h2>
+                                <h:outputText value="By #{auction.owner_username}"/>
+                                <h5><h:outputText value="#{auction.price}"/></h5>
+                                <div class="container-login100-form-btn">
+                                    <h:link value="Buy" action="/" class="login100-form-btn"/>
                                 </div>
-                            </ui:repeat>
-                        </div>
+                            </div>
+                        </ui:repeat>
                     </div>
                 </div>
             </div>
@@ -46,6 +46,9 @@
     </ui:composition>
 </h:body>
 </html>
+
+
+
 
 
 

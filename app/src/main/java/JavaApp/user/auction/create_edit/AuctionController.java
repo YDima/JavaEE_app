@@ -53,6 +53,15 @@ public class AuctionController {
         return "createPhoto.xhtml?faces-redirect=true";
     }
 
+    public String edit() {
+        var session = request.getSession(false);
+        var username = session.getAttribute("username");
+        var auction = new Auction(auctionRequest.getId(), auctionRequest.getCategory_id(), auctionRequest.getTitle(), auctionRequest.getDescription(), auctionRequest.getPrice(), ( String ) username);
+        auctionService.save(auction);
+
+        return "editPhoto.xhtml?faces-redirect=true";
+    }
+
 }
 
 

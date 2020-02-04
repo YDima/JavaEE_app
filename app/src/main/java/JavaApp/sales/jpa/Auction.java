@@ -5,6 +5,19 @@ import javax.persistence.*;
 import java.math.BigDecimal;
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
 @Entity
 @Table(name="auction")
 public class Auction {

@@ -15,9 +15,6 @@ public class ListAuctionParameterController {
     @Inject
     AuctionParameterRepository auctionParameterRepository;
 
-    public List<AuctionParameter> getAuctionParameterListByAuction() {
-        return auctionParameterRepository.findByAuctionId();
-    }
 
     public List<AuctionParameter> getAuctionParameterList() {
         return auctionParameterRepository.findAll();

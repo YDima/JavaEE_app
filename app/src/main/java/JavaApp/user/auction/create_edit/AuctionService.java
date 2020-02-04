@@ -1,9 +1,10 @@
 package JavaApp.user.auction.create_edit;
 
 
-import JavaApp.auth.User;
 import JavaApp.sales.jpa.Auction;
+import JavaApp.sales.jpa.AuctionParameter;
 import JavaApp.sales.jpa.Photo;
+import JavaApp.user.auction.create_edit.auctionParameter.AuctionParameterService;
 import JavaApp.user.auction.create_edit.photo.PhotoService;
 
 import javax.enterprise.context.ApplicationScoped;
@@ -21,6 +22,8 @@ public class AuctionService {
     AuctionRepository auctionRepository;
     @Inject
     PhotoService photoService;
+    @Inject
+    AuctionParameterService auctionParameterService;
 
     public Auction findAuctionById(long auctionId) {
         return auctionRepository.findAuctionById(auctionId);
@@ -30,14 +33,18 @@ public class AuctionService {
         return photoService.getPhotoByAuctionId(auction_id);
     }
 
+    public List<AuctionParameter> findByAuctionId(Long auction) {
+        return auctionParameterService.findByAuctionId(auction);
+    }
+
     @Transactional
     public void save(Auction auction) {
         auctionRepository.save(auction);
     }
 
-    public List<Auction> findAuctionByUser(String username) {
-        User user = new User(username);
-        var owner_username = user.getUsername();
+
+
+    public List<Auction> findAuctionByUser(String owner_username) {
         return auctionRepository.findAuctionByUser(owner_username);
     }
 

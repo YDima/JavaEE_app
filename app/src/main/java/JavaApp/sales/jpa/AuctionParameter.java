@@ -15,6 +15,10 @@ public class AuctionParameter implements Serializable {
     private static final long serialVersionUID = 1l;
 
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name="id")
+    private Long id;
+    @Id
     @Column(name="auction_id")
     private Long auction_id;
 
@@ -25,7 +29,8 @@ public class AuctionParameter implements Serializable {
     @Column(name = "value")
     private String value;
 
-    public AuctionParameter(Long auction_id, Long parameter_id, String value) {
+    public AuctionParameter(Long id, Long auction_id, Long parameter_id, String value) {
+        this.id = id;
         this.auction_id = auction_id;
         this.parameter_id = parameter_id;
         this.value = value;
@@ -56,5 +61,13 @@ public class AuctionParameter implements Serializable {
 
     public void setValue(String value) {
         this.value = value;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 }

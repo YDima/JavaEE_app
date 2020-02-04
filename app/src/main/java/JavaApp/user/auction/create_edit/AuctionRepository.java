@@ -27,7 +27,7 @@ public class AuctionRepository {
             em.merge(auction);
     }
     public List<Auction> findAuctionByUser(String owner_username) {
-        return em.createQuery("from Auction where owner_username=:owner_username", Auction.class).setParameter("owner_username", owner_username).getResultList();
+        return em.createQuery("from Auction where owner_username=:owner_username order by id desc", Auction.class).setParameter("owner_username", owner_username).getResultList();
     }
 
     public List<Auction> findAll() { return em.createQuery("from Auction", Auction.class).getResultList(); }

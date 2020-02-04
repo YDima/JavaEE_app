@@ -27,3 +27,10 @@ databaseChangeLog:
         relativeToChangelogFile: true
         splitStatements: false
         path: 20200201_alter_photo.sql
+  - changeSet:
+      id: 20200201_alter_auction_parameter
+      author: Dmytro Yurchenko
+      sqlFile:
+        relativeToChangelogFile: true
+        splitStatements: false
+        path: 20200201_alter_auction_parameter.sql

@@ -148,7 +148,7 @@ samp {
 /* Left column */
 .leftcolumn {
   float: left;
-  width: 100%;
+  width: 25%;
 }
 
 /* Right column */
@@ -159,9 +159,11 @@ samp {
 }
 /* Add a card effect for articles */
 .card {
-  background-color: white;
-  padding: 20px;
-  margin-top: 20px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  max-width: 300px;
+  margin: auto;
+  text-align: center;
+  font-family: arial;
 }
 
 /* Clear floats after the columns */

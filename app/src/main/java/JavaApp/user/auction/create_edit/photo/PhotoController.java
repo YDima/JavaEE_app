@@ -44,10 +44,17 @@ public class PhotoController {
         return new PhotoRequest();
     }
 
+
     public String save() {
         var photo = new Photo(photoRequest.getLink(), photoRequest.getAuction_id());
         photoService.save(photo);
         return "createAuctionParameters.xhtml?faces-redirect=true";
+
+    }
+    public String edit() {
+        var photo = new Photo(photoRequest.getLink(), photoRequest.getAuction_id());
+        photoService.save(photo);
+        return "editAuctionParameters.xhtml?faces-redirect=true";
 
     }
 

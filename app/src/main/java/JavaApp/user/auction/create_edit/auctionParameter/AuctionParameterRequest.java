@@ -11,6 +11,8 @@ import javax.inject.Named;
 @RequestScoped
 public class AuctionParameterRequest {
 
+    private Long id;
+
     private Long auction_id;
 
     private Long parameter_id;
@@ -18,6 +20,7 @@ public class AuctionParameterRequest {
     private String value;
 
     public AuctionParameterRequest(AuctionParameter auctionParameter) {
+        this.id = auctionParameter.getId();
         this.auction_id = auctionParameter.getAuction_id();
         this.parameter_id = auctionParameter.getParameter_id();
         this.value = auctionParameter.getValue();
@@ -54,6 +57,14 @@ public class AuctionParameterRequest {
 
     public void setValue(String value) {
         this.value = value;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 }
 

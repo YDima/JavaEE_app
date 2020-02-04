@@ -12,12 +12,15 @@
 
 
     <f:metadata>
+
         <f:viewParam name="id" value="#{auctionController.auctionRequest.id}"/>
-        <f:viewParam name="title" value="#{auctionController.auctionRequest.title}"/>
+        <f:viewParam name="name" value="#{auctionController.auctionRequest.title}"/>
         <f:viewParam name="opis" value="#{auctionController.auctionRequest.description}"/>
         <f:viewParam name="price" value="#{auctionController.auctionRequest.price}"/>
-        <f:viewParam name="photo" value="#{auctionController.auctionRequest.photo}"/>
         <f:viewParam name="category" value="#{auctionController.auctionRequest.category_id}"/>
+        <f:viewParam name="photo" value="#{photoController.photoRequest.link}"/>
+        <f:viewParam name="auction" value="#{auctionParameterController.auctionParameterRequest.value}"/>
+
 
     </f:metadata>
 
@@ -35,42 +38,44 @@
             <a><p:commandLink value="Log out" action="#{logoutController.logout}"/></a>
         </h:form>
     </div>
+
     <div class="wrap-login100">
 
         <div class="main">
+
             <div style="child-align: top;">
+
                 <h:form class="login100-form validate-form">
 
-                    <div style="text-align: center;"><h:outputLabel value="Create new auction" style="align-self: center; font-size: large"/></div>
+                    <div style="text-align: center;"><h:outputLabel value="Edit auction" style="align-self: center; font-size: large"/></div>
                     <div class="wrap-input100">
-                        <h:outputLabel value="Auction name"/>
-                        <h:inputText value="#{auctionRequest.title}"  class="input100"/>
+                        <h:outputLabel for="name" value="Auction name"/>
+                        <h:inputText value="#{auctionController.auctionRequest.title}"  id="name" class="input100"/>
                     </div>
-                    <div class="wrap-input100">
-                        <h:outputLabel value = "Photo"/>
-                        <h:selectOneMenu value="#{auctionController.auctionRequest.photo}" class="input100">
-                            <f:selectItems value="#{listPhotoController.photoList}" var="photo" itemLabel="#{photo.link}" itemValue="#{photo.id}"/>
-                        </h:selectOneMenu>
-                    </div>
+
                     <div class="wrap-input100">
                         <h:outputLabel value = "Category"/>
-                        <h:selectOneMenu value="#{auctionController.auctionRequest.category_id}" class="input100">
+                        <h:selectOneMenu value="#{auctionController.auctionRequest.category_id}" id="category" class="input100">
                             <f:selectItems value="#{listCategoryController.categoryList}" var="category" itemLabel="#{category.name}" itemValue="#{category.id}"/>
                         </h:selectOneMenu>
                     </div>
 
                     <div class="wrap-input100">
                         <h:outputLabel value="Description"/>
-                        <h:inputText value="#{auctionRequest.description}" class="input100"/>
+                        <h:inputText value="#{auctionController.auctionRequest.description}" id="opis" class="input100"/>
                     </div>
 
                     <div class="wrap-input100">
                         <h:outputLabel value="Price"/>
-                        <h:inputText value="#{auctionRequest.price}" class="input100"/>
+                        <h:inputText value="#{auctionController.auctionRequest.price}" id="price" class="input100"/>
                     </div>
+                    <h:inputHidden id="id" value="#{auctionController.auctionRequest.id}" />
 
                     <div class="container-login100-form-btn">
-                        <h:commandButton value="Edit" class="login100-form-btn" action="#{auctionController.edit}"/>
+                        <h:commandButton value="Edit" class="login100-form-btn" action="#{auctionController.edit}">
+                            <f:param name="auction" value="#{auctionParameterController.auctionParameterRequest.value}"/>
+                            <f:param name="photo" value="#{photoController.photoRequest.link}"/>
+                        </h:commandButton>
                     </div>
                 </h:form>
             </div>

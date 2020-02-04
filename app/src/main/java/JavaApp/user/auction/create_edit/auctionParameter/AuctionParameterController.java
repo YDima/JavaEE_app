@@ -46,24 +46,12 @@ public class AuctionParameterController {
 
 
         public String save() {
-//            Long auction_id = auctionParameterRequest.getAuction_id();
-//            Long parameter_id = auctionParameterRequest.getParameter_id();
-//            String value = auctionParameterRequest.getValue();
-//            auctionParameterRequest.setAuction_id(auction_id);
-//            auctionParameterRequest.setAuction_id(parameter_id);
-
-            AuctionParameter auctionParameter = new AuctionParameter(auctionParameterRequest.getAuction_id(), auctionParameterRequest.getParameter_id(), auctionParameterRequest.getValue());
+            AuctionParameter auctionParameter = new AuctionParameter(auctionParameterRequest.getId(), auctionParameterRequest.getAuction_id(), auctionParameterRequest.getParameter_id(), auctionParameterRequest.getValue());
             auctionParameterRepository.save(auctionParameter);
 
             return "createAuctionParameters.xhtml?faces-redirect=true";
         }
 
-    public String edit() {
-        AuctionParameter auctionParameter = new AuctionParameter(auctionParameterRequest.getAuction_id(), auctionParameterRequest.getParameter_id(), auctionParameterRequest.getValue());
-        auctionParameterRepository.edit(auctionParameter);
-
-        return "editAuctionParameters.xhtml?faces-redirect=true";
-    }
     }
 
 
